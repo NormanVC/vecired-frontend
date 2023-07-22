@@ -4,6 +4,8 @@ import { NavController, MenuController } from '@ionic/angular';
 import { Usuario, Comunidad } from '../../interfaces/interfaces';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { AlertasService } from '../../servicios/alertas.service';
+import {validate} from 'rut.js';
+import { RutService } from '../../servicios/rut.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,6 +21,8 @@ export class RegistroPage implements OnInit {
     fechaNacimiento: null,
     email: 'francisco.sanches@gmail.com',
     password: '123456',
+    rut: '12345678-9',
+    direccion:'Casimiro Zujomic #221,dto #320,Concepcion'
   }
 
   veciRed:Comunidad = {
@@ -32,7 +36,8 @@ export class RegistroPage implements OnInit {
   constructor( public navCtrl: NavController,
                public usuarioService: UsuarioService,
                public alertasService: AlertasService,
-               private menuCtrl: MenuController ) { 
+               private menuCtrl: MenuController,
+               private rutService: RutService ) { 
                 this.menuCtrl.enable(false, 'first');
                }
 
@@ -40,7 +45,10 @@ export class RegistroPage implements OnInit {
   
   }
 
-  
+  formatearRut(rut: string): string {
+    return this.rutService.formatearRut(rut); // Llamamos a la función del servicio
+  }
+
   async registro(){
 
     const validado = this.validacion();
@@ -112,6 +120,14 @@ export class RegistroPage implements OnInit {
       return this.alertasService.alerta('Las contraseñas no coinciden.'); 
     }
     
+    //Validacion de rut
+    if(!validate(this.userRegistro.rut)){
+      return this.alertasService.alerta('El rut ingresado no es valido.');
+    }
+
+    //Validacion de direccion
+    //TO DO
+
     //Validación de campos vacios
      /* if(registrarse.invalid){
       this.alertasService.alerta('Complete los campos vacíos');
