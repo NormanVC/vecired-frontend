@@ -27,6 +27,8 @@ export interface Usuario {
   email?: string;
   password?: string;
   imagenPerfil?: string;
+  rut?: string;
+  direccion?: string;
   rol?: number[];
   comunidad ?: Comunidad[];
   
@@ -39,6 +41,7 @@ export interface Comunidad{
   coordenadas?: string;
   region?: string;
   comuna?: string;
+  emitirCertificado?: number;
 
 }
 
