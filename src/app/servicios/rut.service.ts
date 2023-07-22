@@ -16,7 +16,10 @@ export class RutService {
     const rutCuerpo = rut.slice(0, -1);
     const rutVerificador = rut.slice(-1);
 
-    return rutCuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rutVerificador;
+    let formateo = rutCuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    formateo += '-' + rutVerificador.toUpperCase(); // Convertimos el dígito verificador a mayúsculas
+
+    return formateo;
   }
 
 }
