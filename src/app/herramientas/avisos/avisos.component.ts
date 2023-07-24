@@ -14,7 +14,7 @@ export class AvisosComponent implements OnInit {
 
   ngOnInit() {
     
-    //console.log(this.avisos)
+    //console.log(this.avisos);
     
 
 }

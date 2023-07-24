@@ -24,6 +24,7 @@ export class AvisoPublicadoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    //console.log(this.aviso);
+  }
 }

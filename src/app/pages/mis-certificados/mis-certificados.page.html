@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+   <!--INICIO TITULO-->
   <ion-grid>
     <div class="ripple-parent">
       <ion-row>
@@ -20,9 +21,26 @@
       <ion-ripple-effect></ion-ripple-effect>
     </div>
   </ion-grid>
+   <!--FIN TITULO-->
+
+  <!-- REVISA SI LOS CERTIFICADOS  EXISTEN -->
+  <ion-card class="noCertificados" *ngIf="emptyCertificados">
+    <h3 class="noCertificadosTitle"><b>¡ Esta comunidad no tiene certificados !</b></h3>
+    <img class="noCertificadosImage"src="/../../assets/sadHouse.png">
+    
+  <ion-card-content>
+    Si deseas que tu comunidad pueda emitir certificados, envia un correo a  <b>vecired@contacto.cl</b>
+    con el nombre de tu comunidad, miembros y documentación que acredite la dirección comunidad.
+  </ion-card-content>
+
+  </ion-card>
+
+
 
   <!--CERTIFICADOS ACA-->
   <app-certificado [certificados]="certificados"></app-certificado>
   <!--FIN CERTIFICADOS-->
 </ion-content>
+
+
 
