@@ -16,9 +16,29 @@
      <ion-col style="margin-top:-1% ;">
        {{certificado.replegal}}
        <ion-icon name="person"></ion-icon>
- 
-     </ion-col>
-     
+      </ion-col>
    </ion-row>
+      <!--INICIO OPCIONES EDITAR Y ELIMINAR-->
+      <ion-row >
+        <ion-col  style="margin-left: 20%;">
+          <ion-buttons>
+            <ion-button 
+                         (click)="editarComunidad(comunidad, indexOfelement)"
+            >
+              
+             <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+         
+        </ion-col>
+        <ion-col >
+         <ion-buttons>
+           <ion-button class="abandonarComunidad" (click)="abandonarComunidad(comunidad, indexOfelement)">
+            <ion-icon  style="color: crimson;"slot="icon-only" name="duplicate-outline"></ion-icon>
+           </ion-button>
+         </ion-buttons>
+        </ion-col>
+      </ion-row>
+      <!--FIN OPCIONES EDITAR Y ELIMINAR-->
   </ion-card-content>
 </ion-card>

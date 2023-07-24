@@ -23,10 +23,10 @@ export class MisCertificadosPage implements OnInit {
 
   loadCertificados() {
     this.certificadoService.getCertificados().subscribe(resp => {
-      console.log(resp);
+      //console.log(resp);
       this.certificados = resp.certificados || [];
       this.emptyCertificados = this.certificados.length === 0; 
-      console.log(this.certificados); 
+      //console.log(this.certificados); 
     });
   }
 
