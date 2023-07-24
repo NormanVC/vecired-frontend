@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>
+        <ion-col class="certificadosTitle ion-text-center">
+          <b>MIS CERTIFICADOS</b>
+        </ion-col>
+      </ion-row>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+
+  <!--CERTIFICADOS ACA-->
+  <app-certificado [certificados]="certificados"></app-certificado>
+  <!--FIN CERTIFICADOS-->
+</ion-content>
+

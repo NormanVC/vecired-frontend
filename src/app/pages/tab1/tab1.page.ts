@@ -165,7 +165,7 @@ export class Tab1Page implements OnInit{
         //cuando disabled crear es TRUE no se pueden crear avisos
         this.usuario = this.usuarioService.obtenerUsuario();
 
-        if( String(this.usuario.comunidad) == '61ac3ce9c27143f6fe782cf0' && respuesta['comunidades'].rol[0] == 2 )
+        if( String(this.usuario.comunidad) == '64a0d54909003038cecc7443' && respuesta['comunidades'].rol[0] == 2 )
         {
           this.disabledCrear = true;
         }else{
