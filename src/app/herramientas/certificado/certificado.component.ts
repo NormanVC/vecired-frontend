@@ -11,7 +11,7 @@ export class CertificadoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.certificados);
+    //console.log(this.certificados);
   }
 
 }

@@ -7,7 +7,14 @@ import { Certificado } from 'src/app/interfaces/interfaces';
   styleUrls: ['./certificado-creado.component.scss'],
 })
 export class CertificadoCreadoComponent implements OnInit {
-  @Input() certificado: Certificado = {};
+  @Input() certificado: Certificado = {
+    titulo: '',
+    descripcion: '',
+    replegal: '',
+    contacto: '',
+    logo: [],
+    comunidad: {}
+  };
   constructor() { }
 
   ngOnInit() {

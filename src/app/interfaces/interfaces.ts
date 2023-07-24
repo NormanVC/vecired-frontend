@@ -87,6 +87,6 @@ export interface Certificado {
   descripcion?: string;
   replegal?: string;
   contacto?: string;
-  logo?: string;
+  logo?: string[];
   comunidad ?: Comunidad;
 }
