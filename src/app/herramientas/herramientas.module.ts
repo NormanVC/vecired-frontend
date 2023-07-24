@@ -11,6 +11,8 @@ import { VotacionPublicadaComponent } from './votacion-publicada/votacion-public
 import { AvisoModalComponent } from './aviso-modal/aviso-modal.component';
 import { CuentaRegresivaComponent } from './cuenta-regresiva/cuenta-regresiva.component';
 import { GraficoComponent } from './grafico/grafico.component';
+import { CertificadoComponent } from './certificado/certificado.component';
+import { CertificadoCreadoComponent } from './certificado-creado/certificado-creado.component';
 
 
 
@@ -24,7 +26,9 @@ import { GraficoComponent } from './grafico/grafico.component';
     VotacionPublicadaComponent,
     AvisoModalComponent,
     CuentaRegresivaComponent,
-    GraficoComponent
+    GraficoComponent,
+    CertificadoComponent,
+    CertificadoCreadoComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,8 @@ import { GraficoComponent } from './grafico/grafico.component';
     VotacionPublicadaComponent,
     AvisoModalComponent,
     CuentaRegresivaComponent,
-    GraficoComponent
+    GraficoComponent,
+    CertificadoComponent
   ]
 })
 export class HerramientasModule { }

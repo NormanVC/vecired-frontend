@@ -74,3 +74,19 @@ export interface Solicitud{
   comunidad?: Comunidad;
   mensaje?: string;
 }
+
+
+export interface CertificadosCreados {
+  certificados: Certificado[];
+  ok: boolean;
+}
+
+export interface Certificado {
+  _id?: string;
+  titulo?: string;
+  descripcion?: string;
+  replegal?: string;
+  contacto?: string;
+  logo?: string;
+  comunidad ?: Comunidad;
+}

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { MisCertificadosPageModule } from '../mis-certificados/mis-certificados.module';
 
 const routes: Routes = [
   {
@@ -94,6 +95,10 @@ const routes: Routes = [
       {
         path: 'condiciones',
         loadChildren: () => import('../condiciones/condiciones.module').then( m => m.CondicionesPageModule)
+      },
+      {
+        path: 'mis-certificados',
+        loadChildren: () => import('../mis-certificados/mis-certificados.module').then(m=> m.MisCertificadosPageModule)
       },
       {
         path: '',
