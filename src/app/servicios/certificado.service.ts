@@ -53,7 +53,7 @@ export class CertificadoService {
     this.Objeto.next(aux);
   }
 
-  //funcion para actualizar una viso
+  //funcion para actualizar un certificado
   actualizarCertificado(certificado: Certificado)
   {
     const headers = new HttpHeaders({

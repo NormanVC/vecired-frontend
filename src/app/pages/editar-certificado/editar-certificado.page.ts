@@ -19,7 +19,6 @@ export class EditarCertificadoPage implements OnInit {
   };
 
   usuario: Usuario = {};
-  tipoAvisoName = 'default';
   Roltype = [];
   constructor( private certificadoService: CertificadoService,
                 private alertasService: AlertasService,
