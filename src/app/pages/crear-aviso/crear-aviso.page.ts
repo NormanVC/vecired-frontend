@@ -44,6 +44,7 @@ export class CrearAvisoPage implements OnInit {
 
    ngOnInit() {
     //this.obtenerRolUsuario();
+    //console.log(this.aviso);
     
   }
   

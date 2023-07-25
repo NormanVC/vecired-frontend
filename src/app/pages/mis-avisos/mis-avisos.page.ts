@@ -140,7 +140,7 @@ export class MisAvisosPage implements OnInit {
       respuesta =>
       {
  
-        if( String(this.usuario.comunidad) == '61ac3ce9c27143f6fe782cf0' && respuesta['currentRol'] == 2 )
+        if( String(this.usuario.comunidad) == '64a0d54909003038cecc7443' && respuesta['currentRol'] == 2 )
         {
           this.disabledCrear = true;
         }else{
