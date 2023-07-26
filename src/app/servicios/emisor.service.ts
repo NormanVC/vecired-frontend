@@ -10,6 +10,7 @@ const url = environment.url;
   providedIn: 'root'
 })
 export class EmisorService {
+  
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {}
 
   getEmisor(pagina: number) {
@@ -19,4 +20,24 @@ export class EmisorService {
 
     return this.http.get<EmisorCreados>(`${url}/emisor/solicitudes?pagina=${pagina}`, { headers });
   }
+
+
+  aceptarSolicitud(idSolicitud: string) {
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken
+    });
+
+    const solicitud = { _id: idSolicitud };
+    return this.http.post(`${url}/emisor/aceptar`, solicitud, { headers });
+  }
+
+  rechazarSolicitud(idSolicitud: string) {
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken
+    });
+
+    const solicitud = { _id: idSolicitud };
+    return this.http.post(`${url}/emisor/rechazar`, solicitud, { headers });
+  }
+
 }

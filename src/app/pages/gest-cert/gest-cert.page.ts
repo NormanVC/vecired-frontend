@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Emisor } from 'src/app/interfaces/interfaces';
 import { EmisorService } from 'src/app/servicios/emisor.service';
+import { AlertasService } from '../../servicios/alertas.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-gest-cert',
@@ -13,8 +16,12 @@ export class GestCertPage implements OnInit {
   infiniteScroll = true;
   pagina = 1;
 
+  aceptar: any;
+  rechazar: any;
 
-  constructor(private emisorService: EmisorService) {}
+  constructor(private emisorService: EmisorService,
+              private alertaService: AlertasService
+              ) {}
 
   ngOnInit() {
     this.emisores = [];
@@ -59,4 +66,56 @@ export class GestCertPage implements OnInit {
   cargarNuevos(event) {
     this.obtenerSolicitudes(event);
   }
+
+
+
+
+  aprobarSolicitud(idSolicitud: string) {
+    //console.log('vamos a aprobar la siguiente solicitud ' + idSolicitud);
+
+    this.alertaService.alertaDecision('¿Desea aceptar a este usuario?').then(
+      respuesta => {
+        this.aceptar = respuesta['data'];
+        if (this.aceptar === true) {
+          this.emisorService.aceptarSolicitud(idSolicitud).subscribe(
+            (respuesta) => {
+             // console.log(respuesta);
+              this.alertaService.presentToast('Solicitud aceptada exitosamente');
+              window.location.reload();
+            },
+            (error) => {
+              console.error('Error al aprobar la solicitud: ', error);
+            }
+          );
+        } else {
+          this.alertaService.presentToast('Operación cancelada');
+        }
+      }
+    );
+  }
+
+  rechazarSolicitud(idSolicitud: string) {
+    //console.log('vamos a rechazar la siguiente solicitud ' + idSolicitud);
+
+    this.alertaService.alertaDecision('¿Desea aceptar a este usuario?').then(
+      respuesta => {
+        this.aceptar = respuesta['data'];
+        if (this.aceptar === true) {
+          this.emisorService.rechazarSolicitud(idSolicitud).subscribe(
+            (respuesta) => {
+             // console.log(respuesta);
+              this.alertaService.presentToast('Solicitud rechazada exitosamente');
+              window.location.reload();
+            },
+            (error) => {
+              console.error('Error al rechazar la solicitud: ', error);
+            }
+          );
+        } else {
+          this.alertaService.presentToast('Operación cancelada');
+        }
+      }
+    );
+  }
+
 }
