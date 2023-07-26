@@ -8,14 +8,46 @@ import { EmisorService } from 'src/app/servicios/emisor.service';
   styleUrls: ['./gest-cert.page.scss'],
 })
 export class GestCertPage implements OnInit {
-  //emisores: Emisor[] = [];
+  emisores: Emisor[] = [];
+
+  emptySolicitud = false;
 
   constructor(private emisorService: EmisorService) { }
 
   ngOnInit() {
-    this.emisorService.getEmisor().subscribe( resp => {
-      console.log(resp);
-    })
+    this.emisores = [];
+    this.obtenerSolicitudes();
   }
+
+  obtenerSolicitudes(event?)
+  {
+    this.emisorService.getEmisor().subscribe(
+      respuesta => {
+        
+        //console.log(respuesta['emisor']);
+        this.emisores =respuesta['emisor'];
+        //console.log(this.solicitudes[0].usuario.nombre);
+        if(this.emisores.length == 0)
+        {
+          this.emptySolicitud = true;
+          
+        }else{
+          this.emptySolicitud = false;
+          
+        }
+
+
+      }
+    )
+
+    if(event)
+        {
+          event.target.complete();
+
+          
+        }
+
+  }
+
 
 }
