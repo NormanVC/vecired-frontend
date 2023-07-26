@@ -13,6 +13,8 @@ import { CuentaRegresivaComponent } from './cuenta-regresiva/cuenta-regresiva.co
 import { GraficoComponent } from './grafico/grafico.component';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { CertificadoCreadoComponent } from './certificado-creado/certificado-creado.component';
+import { EmisoresComponent } from './emisores/emisores.component';
+import { EmisorCreadoComponent } from './emisor-creado/emisor-creado.component';
 
 
 
@@ -28,7 +30,9 @@ import { CertificadoCreadoComponent } from './certificado-creado/certificado-cre
     CuentaRegresivaComponent,
     GraficoComponent,
     CertificadoComponent,
-    CertificadoCreadoComponent
+    CertificadoCreadoComponent,
+    EmisoresComponent,
+    EmisorCreadoComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { CertificadoCreadoComponent } from './certificado-creado/certificado-cre
     AvisoModalComponent,
     CuentaRegresivaComponent,
     GraficoComponent,
-    CertificadoComponent
+    CertificadoComponent,
+    EmisoresComponent
   ]
 })
 export class HerramientasModule { }

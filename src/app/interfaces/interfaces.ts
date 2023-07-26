@@ -90,3 +90,20 @@ export interface Certificado {
   logo?: string[];
   comunidad ?: Comunidad;
 }
+
+export interface EmisorCreados {
+  ok: boolean;
+  pagina: number;
+  emisor: Emisor[];
+}
+
+export interface Emisor {
+  _id?: string;
+  usuario ?: Usuario;
+  rut?: string;
+  motivo?: string;
+  fechaemision?: string;
+  certificado ?: Certificado;
+  comunidad ?: Comunidad;
+  estado?: number;
+}
