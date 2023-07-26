@@ -97,5 +97,19 @@
     </ion-col>
   </ion-row>
   <!--FIN OBTENER DE SOLICITUDES-->
+
+  <!-- INICIO INFINITE SCROLL -->
+  <ion-infinite-scroll (ionInfinite)="cargarNuevos($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más certificados."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- FIN INFINITE SCROLL -->
+
+  <div *ngIf="!infiniteScroll && !emptySolicitud" class="nomasSolicitudes">
+    <p>No hay más solicitudes de certificado disponibles.</p>
+  </div>
+
 </ion-content>
 
