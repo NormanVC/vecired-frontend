@@ -4,7 +4,7 @@
    <ion-row>
     <ion-col>
       <h4>
-        <ion-text color="light">
+        <ion-text color="light" class="vecired">
           VeciRed
         </ion-text>
       </h4>
@@ -26,7 +26,7 @@
                 <ion-icon name="mail" item-start></ion-icon>
                 Correo Electronico
               </ion-label>
-              <ion-input name="correo" type="email" [(ngModel)]="User.email" color="light" required>
+              <ion-input name="correo" type="email" placeholder="tucorreo@VeciRed.cl" [(ngModel)]="User.email" color="light" class="my-label" required>
               </ion-input>
             </ion-item>
 
@@ -35,7 +35,7 @@
                 <ion-icon name="lock-closed" item-start></ion-icon>
                 Contraseña
               </ion-label>
-              <ion-input name="pass" type="password" [(ngModel)]="User.password" color="light" required>
+              <ion-input name="pass" type="password" placeholder="●●●●●●" [(ngModel)]="User.password" color="light"  class="my-label" required>
               </ion-input>
             </ion-item>
 
@@ -44,7 +44,7 @@
       </ion-row>
       
       <p>
-        <ion-text color="light">
+        <ion-text color="light" class="my-label2" >
           <strong>Olvido su contraseña?</strong>
         </ion-text>
       </p>
@@ -61,7 +61,7 @@
   </form>
 
   <p (click)="registrarse()">
-    <ion-text color="light">
+    <ion-text color="light" class="my-label">
       <strong>Registrarse</strong>
     </ion-text>
   </p>

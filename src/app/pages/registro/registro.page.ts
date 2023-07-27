@@ -17,12 +17,12 @@ export class RegistroPage implements OnInit {
   maxTime: String = new Date().toISOString();
 
   userRegistro: Usuario = {
-    nombre: 'Francisco Sánchez',
+    nombre: '',
     fechaNacimiento: null,
-    email: 'francisco.sanches@gmail.com',
-    password: '123456',
-    rut: '12345678-9',
-    direccion:'Casimiro Zujomic #221,dto #320,Concepcion'
+    email: '',
+    password: '',
+    rut: '',
+    direccion:''
   }
 
   veciRed:Comunidad = {
