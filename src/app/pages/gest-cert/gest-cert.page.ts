@@ -97,7 +97,7 @@ export class GestCertPage implements OnInit {
   rechazarSolicitud(idSolicitud: string) {
     //console.log('vamos a rechazar la siguiente solicitud ' + idSolicitud);
 
-    this.alertaService.alertaDecision('¿Desea aceptar a este usuario?').then(
+    this.alertaService.alertaDecision('¿Desea rechazar a este usuario?').then(
       respuesta => {
         this.aceptar = respuesta['data'];
         if (this.aceptar === true) {

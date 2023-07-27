@@ -109,6 +109,10 @@ const routes: Routes = [
         loadChildren: () => import('../gest-cert/gest-cert.module').then( m => m.GestCertPageModule)
       },
       {
+        path: 'estado-cert',
+        loadChildren: () => import('../estado-cert/estado-cert.module').then( m => m.EstadoCertPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

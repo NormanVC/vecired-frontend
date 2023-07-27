@@ -26,7 +26,7 @@
               <ion-icon name="person" item-start></ion-icon>
               Nombre
             </ion-label>
-            <ion-input name="nombre" type="text" minlength="3" maxlength="50" [(ngModel)]="userRegistro.nombre" color="light" required>
+            <ion-input name="nombre" type="text" minlength="3" maxlength="50" placeholder="Manuel Rodriguez Soto" [(ngModel)]="userRegistro.nombre" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 50 - userRegistro.nombre.length }} caracteres restantes</span> 
@@ -53,7 +53,7 @@
                <ion-icon name="mail" item-start></ion-icon>
                Correo Electrónico
              </ion-label>
-             <ion-input name="email" type="email" maxlength="150" [(ngModel)]="userRegistro.email" color="light" color="light" required>
+             <ion-input name="email" type="email" maxlength="150" placeholder="tucorreo@VeciRed.cl" [(ngModel)]="userRegistro.email" color="light" color="light" required>
              </ion-input>
           </ion-item>
           <span class="caracteres">{{ 150 - userRegistro.email.length }} caracteres restantes</span> 
@@ -63,7 +63,7 @@
                <ion-icon name="lock-closed" item-start></ion-icon>
                Contraseña
              </ion-label>
-             <ion-input name="password" type="password" maxlength="100" [(ngModel)]="userRegistro.password" color="light" required>
+             <ion-input name="password" type="password" maxlength="100" placeholder="●●●●●●" [(ngModel)]="userRegistro.password" color="light" required>
              </ion-input>
           </ion-item>
           <span class="caracteres">{{ 100 - userRegistro.password.length }} caracteres restantes</span>
@@ -83,7 +83,7 @@
               <ion-icon name="document" item-start></ion-icon>
               RUT
             </ion-label>
-            <ion-input name="rut" type="text" [(ngModel)]="userRegistro.rut" (ionChange)="userRegistro.rut = formatearRut(userRegistro.rut)" color="light" required>
+            <ion-input name="rut" type="text" [(ngModel)]="userRegistro.rut" placeholder="12.345.678-9" (ionChange)="userRegistro.rut = formatearRut(userRegistro.rut)" color="light" required>
             </ion-input>
           </ion-item>
           
@@ -92,7 +92,7 @@
               <ion-icon name="home" item-start></ion-icon>
               Dirección
             </ion-label>
-            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" color="light" required>
+            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" placeholder="Casimiro Zujomic #221,dto #320,Concepcion" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 150 - userRegistro.direccion.length }} caracteres restantes</span>

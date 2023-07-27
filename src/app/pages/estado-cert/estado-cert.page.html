@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+             *ngFor="let emisor of emisores"
+    >
+    <ion-card class="avisoUnitario"
+    class="avisoUnitario"
+    [ngClass]="{
+      'greyEvent': emisor.estado === 0,
+      'greenEvent': emisor.estado === 1,
+      'redEvent': emisor.estado=== 2
+    }">
+    
+    <ion-card-header>
+      <ion-grid>
+        <ion-row class="ion-justify-content-end"> 
+      <ion-label
+      *ngIf="emisor.estado === 0"
+      color="dark"
+      style="text-transform: uppercase; font-size: 14px; "
+    >
+      <b>SIN RESPONDER</b>
+    </ion-label>
+    <ion-label
+      *ngIf="emisor.estado === 1"
+      color="success"
+      style="text-transform: uppercase; font-size: 14px;"
+    >
+      <b>APROBADA</b>
+    </ion-label>
+    <ion-label
+      *ngIf="emisor.estado === 2"
+      color="danger"
+      style="text-transform: uppercase; font-size: 14px;"
+    >
+      <b>RECHAZADA</b>
+    </ion-label>
+  </ion-row>
+    </ion-grid>
+      <ion-card-subtitle class="fontColor ion-text-left">
+        <ion-icon name="people"></ion-icon>
+        {{ emisor.comunidad.nombreComunidad }}
+      </ion-card-subtitle>
+      <ion-card-subtitle class="ion-text-left">
+        <b>{{ emisor.certificado.titulo }}</b>
+      </ion-card-subtitle>
+      <ion-col offset="9">
+        <ion-button
+          class="generador"
+          id="aceptarVe"
+          color="success"
+          size="size-xs"
+          style="width: 25%;"
+          [disabled]="emisor.estado !== 1"
+          (click)="evento()"
+        >
+        <ion-icon slot="icon-only" name="download-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-card-header>
+    
+    </ion-card>
+
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
