@@ -11,6 +11,7 @@ import { AlertasService } from 'src/app/servicios/alertas.service';
 export class EstadoCertPage implements OnInit {
   emisores: Emisor[] = [];
   emptySolicitud = false;
+  mipagina= 1;
 
   constructor(private emisorService: EmisorService,
               private alertaService: AlertasService
@@ -20,42 +21,41 @@ export class EstadoCertPage implements OnInit {
    // this.emisorService.getmisEmisores().subscribe( resp =>{
     //  console.log(resp);
     //});
-    this.emisores = [];
+   // this.emisores = [];
     this.getmisEmisores();
 
   }
 
-  getmisEmisores(event?)
-  {
-    this.emisorService.getmisEmisores().subscribe(
-      respuesta => {
-        //console.log(respuesta['solicitudes']);
-        this.emisores =respuesta['emisor'];
-        //console.log(this.solicitudes[0].usuario.nombre);
-        if(this.emisores.length == 0)
-        {
-          this.emptySolicitud = true;
-          
-        }else{
-          this.emptySolicitud = false;
-          
-        }
+  getmisEmisores(event?, pull: boolean = false) {
+    if (pull) {
+      this.emisores = [];
+      this.mipagina = 1;
+    }
 
+    this.emisorService.getmisEmisores(this.mipagina).subscribe((respuesta) => {
+      const nuevosEmisores = respuesta['emisor'];
 
+      if (pull) {
+        this.emisores = nuevosEmisores;
+      } else {
+        this.emisores.push(...nuevosEmisores);
       }
-    )
 
-    if(event)
-        {
-          event.target.complete();
-
-          
-        }
-
+      this.emptySolicitud = this.emisores.length === 0;
+      this.mipagina++;
+      if (event) {
+        event.target.complete();
+      }
+    });
   }
 
-  evento(){
-    this.alertaService.alerta('Esta funcion aun no esta implementada');
+  pull2refresh(event) {
+    this.getmisEmisores(event, true);
   }
+
+  infinito(event) {
+    this.getmisEmisores(event);
+  }
+
 
 }

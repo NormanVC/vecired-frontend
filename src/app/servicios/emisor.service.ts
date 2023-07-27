@@ -10,7 +10,6 @@ const url = environment.url;
   providedIn: 'root'
 })
 export class EmisorService {
-  mipagina = 0;
   
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {}
 
@@ -41,12 +40,12 @@ export class EmisorService {
     return this.http.post(`${url}/emisor/rechazar`, solicitud, { headers });
   }
 
-  getmisEmisores() {
+  getmisEmisores(pagina: number) {
     const headers = new HttpHeaders({
-      'UToken': this.usuarioService.userToken
+      'UToken': this.usuarioService.userToken,
     });
-    this.mipagina++;
-    return this.http.get<EmisorCreados>(`${url}/emisor/miscertificados?pagina=${this.mipagina}`, { headers });
+
+    return this.http.get<EmisorCreados>(`${url}/emisor/miscertificados?pagina=${pagina}`, { headers });
   }
 
 }
