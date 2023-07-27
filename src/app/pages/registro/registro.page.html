@@ -4,7 +4,7 @@
   <ion-row>
    <ion-col>
      <h4>
-       <ion-text color="light">
+       <ion-text color="light" class="vecired">
          VeciRed
        </ion-text>
      </h4>
@@ -73,14 +73,14 @@
               <ion-icon name="lock-closed" item-start></ion-icon>
               Repita Contraseña
             </ion-label>
-            <ion-input name="repitePass" type="password" maxlength="100" [(ngModel)]="repitaPassword" color="light" required>
+            <ion-input name="repitePass" type="password" maxlength="100" placeholder="●●●●●●" [(ngModel)]="repitaPassword" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 100 - repitaPassword.length }} caracteres restantes</span>
 
           <ion-item color="none">
             <ion-label position="floating" color="light" class="my-label">
-              <ion-icon name="document" item-start></ion-icon>
+              <ion-icon name="key" item-start></ion-icon>
               RUT
             </ion-label>
             <ion-input name="rut" type="text" [(ngModel)]="userRegistro.rut" placeholder="12.345.678-9" (ionChange)="userRegistro.rut = formatearRut(userRegistro.rut)" color="light" required>

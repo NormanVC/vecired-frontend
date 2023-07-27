@@ -31,25 +31,26 @@
     
     <ion-card-header>
       <ion-grid>
-        <ion-row class="ion-justify-content-end"> 
+      <ion-row class="ion-justify-content-end">
+      <ion-title class="status"> Estado:</ion-title>
       <ion-label
       *ngIf="emisor.estado === 0"
       color="dark"
-      style="text-transform: uppercase; font-size: 14px; "
+      style="text-transform: uppercase; font-size: 14px; margin-top: 10px;"
     >
       <b>SIN RESPONDER</b>
     </ion-label>
     <ion-label
       *ngIf="emisor.estado === 1"
       color="success"
-      style="text-transform: uppercase; font-size: 14px;"
+      style="text-transform: uppercase; font-size: 14px;margin-top: 10px;"
     >
       <b>APROBADA</b>
     </ion-label>
     <ion-label
       *ngIf="emisor.estado === 2"
       color="danger"
-      style="text-transform: uppercase; font-size: 14px;"
+      style="text-transform: uppercase; font-size: 14px;margin-top: 10px;"
     >
       <b>RECHAZADA</b>
     </ion-label>
@@ -67,7 +68,7 @@
           class="generador"
           id="aceptarVe"
           color="success"
-          size="size-xs"
+          size="size-s"
           style="width: 25%;"
           [disabled]="emisor.estado !== 1"
           (click)="evento()"
