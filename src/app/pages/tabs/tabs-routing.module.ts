@@ -113,6 +113,10 @@ const routes: Routes = [
         loadChildren: () => import('../estado-cert/estado-cert.module').then( m => m.EstadoCertPageModule)
       },
       {
+        path: 'crear-cert',
+        loadChildren: () => import('../crear-cert/crear-cert.module').then( m => m.CrearCertPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

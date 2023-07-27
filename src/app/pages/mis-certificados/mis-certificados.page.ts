@@ -50,9 +50,23 @@ export class MisCertificadosPage implements OnInit {
     });
   }
 
-  NavegarCrearAviso()
+  async NavegarCrearCertificado()
   {
-    this.ruta.navigateByUrl('/main/tabs/crear-certificado');
+    //console.log(id);
+    //this.ruta.navigateByUrl('/main/tabs/crear-cert');
+
+    if (this.Roltype[0] === 2) {
+      // Si el rol es 2 muestra alerta
+      const alert = await this.alertController.create({
+        message: 'Solo personas de la directiva pueden crear certificados.',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    } else {
+      this.ruta.navigateByUrl('main/tabs/crear-cert');
+    }
+
   }
 
   async editarCerticado(certificado) {
