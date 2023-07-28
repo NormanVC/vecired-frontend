@@ -16,6 +16,8 @@ export class AppComponent implements OnInit{
   rol;
   usuario: Usuario = {};
   largoSolicitud = 0;
+  accordionAbierto: boolean = false; 
+
   constructor( private usuarioService: UsuarioService,
                private avisosService: AvisosService,
                private navController: NavController,
@@ -77,6 +79,11 @@ export class AppComponent implements OnInit{
       this.obtenerLargoSolicitud();
     }
     
+  }
+
+
+  toggleCertificados() {
+    this.accordionAbierto = !this.accordionAbierto;
   }
 
   formatearRut(rut: string): string {

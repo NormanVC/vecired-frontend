@@ -46,6 +46,7 @@
 
 .cabecera{
     --background: linear-gradient(135deg, #110A3B, #2f32a0);
+    
 }
 
 .caracteres{
@@ -54,4 +55,11 @@
     //text-align: right;
     margin-left: auto;
     color: grey;
+}
+
+.vecired {
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
 }

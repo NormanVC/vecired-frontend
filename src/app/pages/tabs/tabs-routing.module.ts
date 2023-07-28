@@ -27,7 +27,7 @@ const routes: Routes = [
       {
         path: 'crear-aviso',
         loadChildren: () => import('../crear-aviso/crear-aviso.module').then(m => m.CrearAvisoPageModule)
-      }, 
+      },
       {
         path: 'crear-acuerdo',
         loadChildren: () => import('../crear-acuerdo/crear-acuerdo.module').then( m => m.CrearAcuerdoPageModule)
@@ -111,6 +111,14 @@ const routes: Routes = [
       {
         path: 'estado-cert',
         loadChildren: () => import('../estado-cert/estado-cert.module').then( m => m.EstadoCertPageModule)
+      },
+      {
+        path: 'crear-cert',
+        loadChildren: () => import('../crear-cert/crear-cert.module').then( m => m.CrearCertPageModule)
+      },
+      {
+        path: 'solicitar-cert',
+        loadChildren: () => import('../solicitar-cert/solicitar-cert.module').then( m => m.SolicitarCertPageModule)
       },
       {
         path: '',

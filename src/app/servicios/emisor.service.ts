@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { EmisorCreados } from '../interfaces/interfaces';
 import { UsuarioService } from './usuario.service';
+import { ReplaySubject } from 'rxjs';
+import { Emisor } from '../interfaces/interfaces';
 
 const url = environment.url;
 
@@ -10,8 +12,11 @@ const url = environment.url;
   providedIn: 'root'
 })
 export class EmisorService {
-  mipagina = 0;
-  
+
+  nuevaSolicitud = new EventEmitter();
+  Objeto = new ReplaySubject<{}>();
+  nuevoEmisor = new EventEmitter<Emisor>();
+
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {}
 
   getEmisor(pagina: number) {
@@ -41,12 +46,37 @@ export class EmisorService {
     return this.http.post(`${url}/emisor/rechazar`, solicitud, { headers });
   }
 
-  getmisEmisores() {
+  getmisEmisores(pagina: number) {
     const headers = new HttpHeaders({
-      'UToken': this.usuarioService.userToken
+      'UToken': this.usuarioService.userToken,
     });
-    this.mipagina++;
-    return this.http.get<EmisorCreados>(`${url}/emisor/miscertificados?pagina=${this.mipagina}`, { headers });
+
+    return this.http.get<EmisorCreados>(`${url}/emisor/miscertificados?pagina=${pagina}`, { headers });
+  }
+
+  crearSolicitud(emisor){
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken,
+    });
+
+     return new Promise( resolve =>
+      {
+        this.http.post(`${url}/emisor/solicitud`, emisor,{headers}).subscribe( respuesta =>
+          {
+            console.log(respuesta);
+            this.nuevoEmisor.emit(respuesta['emisor']);
+            resolve(true);
+          })
+
+      });
+
+  }
+
+
+
+  enviarDatos(datos) {
+    const aux = datos;
+    this.Objeto.next(aux);
   }
 
 }

@@ -5,13 +5,13 @@
       <ion-menu-button menu="first" color="light"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title class="ion-text-center" color="light">
+    <ion-title class="vecired" color="light">
       VeciRed
     </ion-title>
     <!--CREAR NUEVO CERTIFICADO-->
     <ion-buttons size="large" fill="clear" slot="end" >
       <ion-button [disabled]="disabledCrear"
-                    (click)="NavegarCrearAviso()"
+                    (click)="NavegarCrearCertificado()"
                     color="light"
                     
                     
@@ -88,7 +88,7 @@
         </ion-col>
         <ion-col >
          <ion-buttons>
-           <ion-button class="abandonarComunidad" (click)="abandonarComunidad(comunidad, indexOfelement)">
+           <ion-button  (click)="emitirCertificado(certificado._id)">
             <ion-icon  style="color: black;"slot="icon-only" name="duplicate-outline"></ion-icon>
            </ion-button>
          </ion-buttons>

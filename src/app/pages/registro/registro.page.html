@@ -26,7 +26,7 @@
               <ion-icon name="person" item-start></ion-icon>
               Nombre
             </ion-label>
-            <ion-input name="nombre" type="text" minlength="3" maxlength="50" placeholder="Manuel Rodriguez Soto" [(ngModel)]="userRegistro.nombre" color="light" required>
+            <ion-input name="nombre" type="text" minlength="3" class="my-label" maxlength="50" placeholder="Manuel Rodriguez Soto" [(ngModel)]="userRegistro.nombre" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 50 - userRegistro.nombre.length }} caracteres restantes</span> 
@@ -39,6 +39,7 @@
             <ion-datetime 
                       display-format="DD MMMM YYYY" 
                       name="fechaNacimiento"
+                      class="my-label"
                       picker-format="DD MMMM YYYY"
                       month-names="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
                       [max]="maxTime"
@@ -53,7 +54,7 @@
                <ion-icon name="mail" item-start></ion-icon>
                Correo Electrónico
              </ion-label>
-             <ion-input name="email" type="email" maxlength="150" placeholder="tucorreo@VeciRed.cl" [(ngModel)]="userRegistro.email" color="light" color="light" required>
+             <ion-input name="email" type="email" maxlength="150" class="my-label" placeholder="tucorreo@VeciRed.cl" [(ngModel)]="userRegistro.email" color="light" color="light" required>
              </ion-input>
           </ion-item>
           <span class="caracteres">{{ 150 - userRegistro.email.length }} caracteres restantes</span> 
@@ -63,7 +64,7 @@
                <ion-icon name="lock-closed" item-start></ion-icon>
                Contraseña
              </ion-label>
-             <ion-input name="password" type="password" maxlength="100" placeholder="●●●●●●" [(ngModel)]="userRegistro.password" color="light" required>
+             <ion-input name="password" type="password" maxlength="100"  class="my-label" placeholder="●●●●●●" [(ngModel)]="userRegistro.password" color="light" required>
              </ion-input>
           </ion-item>
           <span class="caracteres">{{ 100 - userRegistro.password.length }} caracteres restantes</span>
@@ -73,7 +74,7 @@
               <ion-icon name="lock-closed" item-start></ion-icon>
               Repita Contraseña
             </ion-label>
-            <ion-input name="repitePass" type="password" maxlength="100" placeholder="●●●●●●" [(ngModel)]="repitaPassword" color="light" required>
+            <ion-input name="repitePass" type="password" maxlength="100"  class="my-label" placeholder="●●●●●●" [(ngModel)]="repitaPassword" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 100 - repitaPassword.length }} caracteres restantes</span>
@@ -83,7 +84,7 @@
               <ion-icon name="key" item-start></ion-icon>
               RUT
             </ion-label>
-            <ion-input name="rut" type="text" [(ngModel)]="userRegistro.rut" placeholder="12.345.678-9" (ionChange)="userRegistro.rut = formatearRut(userRegistro.rut)" color="light" required>
+            <ion-input name="rut" type="text" [(ngModel)]="userRegistro.rut" class="my-label" placeholder="12.345.678-9" (ionChange)="userRegistro.rut = formatearRut(userRegistro.rut)" color="light" required>
             </ion-input>
           </ion-item>
           
@@ -92,7 +93,7 @@
               <ion-icon name="home" item-start></ion-icon>
               Dirección
             </ion-label>
-            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" placeholder="Casimiro Zujomic #221,dto #320,Concepcion" color="light" required>
+            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" class="my-label" placeholder="Casimiro Zujomic #221,dto #320,Concepcion" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 150 - userRegistro.direccion.length }} caracteres restantes</span>
@@ -114,7 +115,7 @@
  </form>
 
   <p (click)="login()">
-    <ion-text color="light">
+    <ion-text color="light" class="my-label">
       <strong>Ya tengo cuenta</strong>
     </ion-text>
   </p>

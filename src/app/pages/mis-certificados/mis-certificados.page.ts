@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CertificadoService } from '../../servicios/certificado.service';
 import { Certificado, Usuario } from 'src/app/interfaces/interfaces';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { AlertController } from '@ionic/angular';
+import { EmisorService } from 'src/app/servicios/emisor.service';
 
 
 @Component({
@@ -15,14 +16,22 @@ export class MisCertificadosPage implements OnInit {
   certificados: Certificado[] = []; // Inicializamos como un arreglo vacío para evitar undefined.
   emptyCertificados: boolean = false;
 
+  emisor ={
+    rut: '',
+    motivo: '',
+    certificado: ''
+  };
 
   Roltype = [];
   usuario: Usuario = {};
+  mostrarInputMensaje = false;
+
 
   constructor(private certificadoService: CertificadoService,
               private ruta: Router,
               private usuarioService: UsuarioService,
-              private alertController: AlertController
+              private alertController: AlertController,
+              private emisorService: EmisorService
               ) { }
 
   ngOnInit() {
@@ -47,12 +56,34 @@ export class MisCertificadosPage implements OnInit {
       this.certificados = resp.certificados || [];
       this.emptyCertificados = this.certificados.length === 0; 
       //console.log(this.certificados); 
+      this.emisor = {
+        rut: '',
+        motivo: '¡Hola!, me gustaria unirme a tu comunidad',
+        certificado:''
+      }
+      this.mostrarInputMensaje = false;
+
+  
     });
   }
 
-  NavegarCrearAviso()
+  async NavegarCrearCertificado()
   {
-    this.ruta.navigateByUrl('/main/tabs/crear-certificado');
+    //console.log(id);
+    //this.ruta.navigateByUrl('/main/tabs/crear-cert');
+
+    if (this.Roltype[0] === 2) {
+      // Si el rol es 2 muestra alerta
+      const alert = await this.alertController.create({
+        message: 'Solo personas de la directiva pueden crear certificados.',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    } else {
+      this.ruta.navigateByUrl('main/tabs/crear-cert');
+    }
+
   }
 
   async editarCerticado(certificado) {
@@ -74,4 +105,9 @@ export class MisCertificadosPage implements OnInit {
     }
   }
 
+  async emitirCertificado(id) {
+
+    this.emisorService.enviarDatos(id); // Envía directamente el id en lugar de this.emisor
+    this.ruta.navigateByUrl('main/tabs/solicitar-cert');
+  }
 }
