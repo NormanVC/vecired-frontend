@@ -15,7 +15,7 @@ const url = environment.url;
 export class ComunidadService {
 
   nuevaComunidad = new EventEmitter<Comunidad>();
-
+  comunidad: Comunidad ={};
   //Objeto = new EventEmitter<Comunidad>();
   Objeto = new ReplaySubject<{}>();
 
@@ -97,4 +97,15 @@ export class ComunidadService {
     
 
   }
+
+  obtenerComunidad(){
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken
+    });
+
+    return this.http.get(`${url}/comunidad/puedeemitir`,{headers});
+
+
+  }
+
 }
