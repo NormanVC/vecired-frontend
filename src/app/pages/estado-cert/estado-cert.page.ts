@@ -21,7 +21,7 @@ export class EstadoCertPage implements OnInit {
    // this.emisorService.getmisEmisores().subscribe( resp =>{
     //  console.log(resp);
     //});
-   // this.emisores = [];
+    //this.emisores = [];
     this.getmisEmisores();
 
   }
@@ -50,6 +50,7 @@ export class EstadoCertPage implements OnInit {
   }
 
   pull2refresh(event) {
+   // console.log('Pull to refresh event triggered.');
     this.getmisEmisores(event, true);
   }
 
@@ -57,5 +58,8 @@ export class EstadoCertPage implements OnInit {
     this.getmisEmisores(event);
   }
 
+  evento(){
+    this.alertaService.alerta('Esta esta funcionalidad aún no se encuentra desarrollada');
+  }
 
 }
