@@ -107,3 +107,7 @@ export interface Emisor {
   comunidad ?: Comunidad;
   estado?: number;
 }
+
+export interface RespuestaComunidad {
+  puedeEmitir: number;
+}
