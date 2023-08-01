@@ -5,6 +5,7 @@ import { EmisorCreados } from '../interfaces/interfaces';
 import { UsuarioService } from './usuario.service';
 import { ReplaySubject } from 'rxjs';
 import { Emisor } from '../interfaces/interfaces';
+import { AlertasService } from './alertas.service';
 
 const url = environment.url;
 
@@ -17,7 +18,8 @@ export class EmisorService {
   Objeto = new ReplaySubject<{}>();
   nuevoEmisor = new EventEmitter<Emisor>();
 
-  constructor(private http: HttpClient, private usuarioService: UsuarioService) {}
+  constructor(private http: HttpClient, private usuarioService: UsuarioService,
+              private alertaService: AlertasService) {}
 
   getEmisor(pagina: number) {
     const headers = new HttpHeaders({
@@ -34,6 +36,7 @@ export class EmisorService {
     });
 
     const solicitud = { _id: idSolicitud };
+    this.alertaService.presentToast('Solicitud aceptada exitosamente');
     return this.http.post(`${url}/emisor/aceptar`, solicitud, { headers });
   }
 
@@ -43,6 +46,7 @@ export class EmisorService {
     });
 
     const solicitud = { _id: idSolicitud };
+    this.alertaService.presentToast('Solicitud rechazada exitosamente');
     return this.http.post(`${url}/emisor/rechazar`, solicitud, { headers });
   }
 

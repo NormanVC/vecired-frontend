@@ -24,7 +24,7 @@
     <div class="ripple-parent">
       <ion-row>    
         <ion-col  class="emisorTitle ion-text-center">
-          <b>MIS SOLICITUDES DE CERTIFICADOS</b>
+          <b>SOLICITUDES DE CERTIFICADOS DE MI COMUNIDAD</b>
         </ion-col>
       </ion-row>     
       <ion-ripple-effect></ion-ripple-effect>
@@ -41,8 +41,15 @@
 </ion-grid>
   <!--FIN EMTPY SOLICITUD-->
 
+  <ion-refresher slot="fixed" (ionRefresh)="pull2refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <!-- INICIO  OBTENER SOLICITUDES -->
 
+
+
+  
   <ion-row>
     <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
              *ngFor="let emisor of emisores"
