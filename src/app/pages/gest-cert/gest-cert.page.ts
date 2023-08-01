@@ -28,17 +28,16 @@ export class GestCertPage implements OnInit {
     this.obtenerSolicitudes();
     //console.log(this.emisores.length);
   }
-
   obtenerSolicitudes(event?) {
     this.emisorService.getEmisor(this.pagina).subscribe(
       (respuesta) => {
         const nuevosEmisores = respuesta['emisor'];
-  
+
         if (nuevosEmisores.length === 0) {
-          //se apaga el infinite scroll
+          // se apaga el infinite scroll
           this.infiniteScroll = false;
           if (this.pagina === 1) {
-            // Si la página es 1 y no hay solicitudes se muestra que comunidad no tiene mas solicitudes
+            // Si la página es 1 y no hay solicitudes, se muestra que la comunidad no tiene más solicitudes
             this.emptySolicitud = true;
           }
           if (event) {
@@ -46,10 +45,10 @@ export class GestCertPage implements OnInit {
           }
           return;
         }
-    
+
         this.emisores = this.emisores.concat(nuevosEmisores);
-        this.pagina++;
-  
+        this.pagina++; // Increment the page number for infinite scroll.
+
         if (event) {
           event.target.complete();
         }
@@ -64,10 +63,13 @@ export class GestCertPage implements OnInit {
   }
 
   cargarNuevos(event) {
+    this.infiniteScroll = true;
     this.obtenerSolicitudes(event);
   }
 
-
+  pull2refresh(event) {
+    window.location.reload();
+  }
 
 
   aprobarSolicitud(idSolicitud: string) {
@@ -80,7 +82,7 @@ export class GestCertPage implements OnInit {
           this.emisorService.aceptarSolicitud(idSolicitud).subscribe(
             (respuesta) => {
              // console.log(respuesta);
-              this.alertaService.presentToast('Solicitud aceptada exitosamente');
+              
               window.location.reload();
             },
             (error) => {
@@ -104,7 +106,7 @@ export class GestCertPage implements OnInit {
           this.emisorService.rechazarSolicitud(idSolicitud).subscribe(
             (respuesta) => {
              // console.log(respuesta);
-              this.alertaService.presentToast('Solicitud rechazada exitosamente');
+
               window.location.reload();
             },
             (error) => {
