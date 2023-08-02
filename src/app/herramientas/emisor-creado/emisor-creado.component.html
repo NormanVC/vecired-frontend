@@ -22,7 +22,7 @@
                        color="success"
                        size="small"
                        style="width: 84%;"
-                       (click)="aceptarVecino(solicitud.comunidad._id, solicitud.usuario._id, solicitud._id)"
+                       (click)="aprobarSolicitud(emisor._id)"
           >               
            aceptar
           </ion-button>
@@ -31,7 +31,7 @@
         <ion-button    class="rechazarVecino"
                        color="danger"
                        size="small"
-                       (click)="rechazoVecino(solicitud._id)"
+                       (click)="rechazarSolicitud(emisor._id)"
           >               
            rechazar
           </ion-button>
