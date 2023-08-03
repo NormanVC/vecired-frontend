@@ -5,6 +5,6 @@ export const environment = {
   //url: 'http://localhost:3000'
   //url: 'https://shrouded-reaches-97156.herokuapp.com'
   //url: 'https://vecired.herokuapp.com'
-  //url: 'http://localhost:3000'
-  url: 'http://192.168.1.82:3000'
+  url: 'http://localhost:3000'
+  //url: 'http://192.168.1.82:3000'
 };
