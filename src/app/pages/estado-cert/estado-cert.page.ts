@@ -12,7 +12,8 @@ export class EstadoCertPage implements OnInit {
   emisores: Emisor[] = [];
   emptySolicitud = false;
   mipagina= 1;
-
+  finInfinito =false;
+  
   constructor(private emisorService: EmisorService,
               private alertaService: AlertasService
               ) { }
