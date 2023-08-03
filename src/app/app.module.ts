@@ -18,19 +18,19 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: 
-  [BrowserModule, 
-   IonicModule.forRoot(), 
+  imports:
+  [BrowserModule,
+   IonicModule.forRoot(),
    AppRoutingModule,
    HttpClientModule,
    IonicStorageModule.forRoot()],
-  providers: 
+  providers:
   [
     Camera,
     FileTransfer,
-    { 
-    provide: 
-      RouteReuseStrategy, 
+    {
+    provide:
+      RouteReuseStrategy,
       useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

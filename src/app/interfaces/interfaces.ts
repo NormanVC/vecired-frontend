@@ -14,10 +14,9 @@ export interface Avisos {
   descripcion?: string;
   usuario?: Usuario;
   fechaCreacion?: string;
-  comunidad ?: Comunidad;
-  tipoAviso ?: number;
-  estadoAviso ?: number;
- 
+  comunidad?: Comunidad;
+  tipoAviso?: number;
+  estadoAviso?: number;
 }
 
 export interface Usuario {
@@ -30,8 +29,7 @@ export interface Usuario {
   rut?: string;
   direccion?: string;
   rol?: number[];
-  comunidad ?: Comunidad[];
-  
+  comunidad?: Comunidad[];
 }
 
 export interface Comunidad{
@@ -65,7 +63,7 @@ export interface Acuerdos {
   usuario?: Usuario;
   comunidad?: Comunidad;
   estado?: number;
- 
+
 }
 
 export interface Solicitud{
@@ -88,7 +86,7 @@ export interface Certificado {
   replegal?: string;
   contacto?: string;
   logo?: string[];
-  comunidad ?: Comunidad;
+  comunidad?: Comunidad;
 }
 
 export interface EmisorCreados {
@@ -99,15 +97,33 @@ export interface EmisorCreados {
 
 export interface Emisor {
   _id?: string;
-  usuario ?: Usuario;
+  usuario?: Usuario;
   rut?: string;
   motivo?: string;
   fechaemision?: string;
-  certificado ?: Certificado;
-  comunidad ?: Comunidad;
+  certificado?: Certificado;
+  comunidad?: Comunidad;
   estado?: number;
 }
 
 export interface RespuestaComunidad {
   puedeEmitir: number;
+}
+
+export interface PublicacionesCreadas {
+  publicaciones: Publicacion[];
+  ok: boolean;
+}
+
+export interface Publicacion{
+  _id?: string;
+  titulo: string;
+  descripcion: string;
+  imagenes: string[];
+  precio: number;
+  categoria: string;
+  usuarioId?: Usuario;
+  comunidadId?: Comunidad;
+  estado: string;
+  fechaCreacion: string;
 }
