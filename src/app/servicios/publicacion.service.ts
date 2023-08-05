@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { UsuarioService } from './usuario.service';
-import { PublicacionesCreadas } from '../interfaces/interfaces';
+import { PublicacionesCreadas, Publicacion } from '../interfaces/interfaces';
 
 const URL = environment.url;
 
@@ -11,6 +11,7 @@ const URL = environment.url;
 })
 
 export class PublicacionService {
+  nuevaPublicacion = new EventEmitter<Publicacion>();
 
   constructor( private http: HttpClient,
                private usuarioService: UsuarioService) { }
@@ -22,6 +23,24 @@ export class PublicacionService {
     });
 
     return this.http.get<PublicacionesCreadas[]>(`${URL}/publicacion/`, { headers });
+
+  }
+
+  crearPublicacion(publicacion){
+
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken
+    });
+
+    return new Promise( resolve =>{
+
+      this.http.post(`${URL}/publicacion/crear`, publicacion, {headers}).subscribe( respuesta =>{
+        console.log(respuesta);
+        this.nuevaPublicacion.emit(respuesta['publicacion']);
+        resolve(true);
+      });
+
+    });
 
   }
 

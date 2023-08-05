@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   usuario: Usuario = {};
   largoSolicitud = 0;
   accordionAbierto: boolean = false; 
+  accordionMarketplace: boolean = false;
 
   constructor( private usuarioService: UsuarioService,
                private avisosService: AvisosService,
@@ -81,6 +82,10 @@ export class AppComponent implements OnInit{
     
   }
 
+
+  toggleMarketplace() {
+    this.accordionMarketplace = !this.accordionMarketplace;
+  }
 
   toggleCertificados() {
     this.accordionAbierto = !this.accordionAbierto;
