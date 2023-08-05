@@ -124,6 +124,6 @@ export interface Publicacion{
   categoria: string;
   usuarioId?: Usuario;
   comunidadId?: Comunidad;
-  estado: string;
-  fechaCreacion: string;
+  estado?: string;
+  fechaCreacion?: string;
 }

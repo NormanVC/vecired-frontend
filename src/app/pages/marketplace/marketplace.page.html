@@ -7,21 +7,40 @@
 
     <ion-title class="vecired" color="dark">VeciRed</ion-title>
 
+    <ion-buttons routerLink="/main/tabs/crear-publicacion" slot="end">
+      <ion-icon slot="icon-only" name="add-outline" color="dark"></ion-icon>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <!-- Titulo -->
+  <ion-select 
+    #sectionSelect
+    style="display: none !important;"
+    [(ngModel)]="comunidadId"
+    (ionChange)="actualizarToken()"
+  >
+    <ion-select-option *ngFor="let comunidad of Comunidad" [value]="comunidad._id">
+      {{ comunidad.nombreComunidad }}
+    </ion-select-option>
+  </ion-select>
   <ion-grid>
     <div class="ripple-parent">
       <ion-row>
         <ion-col>
 
         </ion-col>
-        <ion-toolbar class="publicacionTitle ion-text-center">
+        <ion-col class="publicacionTitle ion-text-center">
           <b> MARKETPLACE </b>
-        </ion-toolbar>
+        </ion-col>
+        <ion-col>
+          <ion-buttons class="cambiarComunidad" (click)="mostrarSelect($event)">
+            <ion-icon slot="icon-only" name="people"></ion-icon>
+          </ion-buttons>
+        </ion-col>
       </ion-row>
       <ion-ripple-effect></ion-ripple-effect>
     </div>
@@ -56,12 +75,12 @@
 
   <!-- Infinite Scroll -->
 
-  <ion-infinite-scroll threshold="150px" (ionInfinite)="siguientes($event)">
+  <!--<ion-infinite-scroll threshold="150px" (ionInfinite)="siguientes($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="Cargando...">
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll>-->
   
 
 
