@@ -141,6 +141,10 @@ const routes: Routes = [
         loadChildren: () => import('../renovar-publicacion/renovar-publicacion.module').then( m=> m.RenovarPublicacionPageModule)
       },
       {
+        path: 'op-cert',
+        loadChildren: () => import('../opcert/opcert-routing.module').then( m => m.OpcertPageRoutingModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
