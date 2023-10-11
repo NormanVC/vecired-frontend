@@ -45,31 +45,6 @@
             </ion-menu-toggle>
           </ion-list>
           <!-- ACORDION -->
-
-          <!-- ACORDION MARKETPLACE -->
-          <ion-item (click)="toggleMarketplace()">
-            <ion-icon name="basket-outline" slot="start"></ion-icon>
-            Marketplace
-            <ion-icon [name]="accordionMarketplce? 'chevron-up-outline' : 'chevron-down-outline'" slot="end"></ion-icon>
-          </ion-item>
-          <ion-list *ngIf="accordionMarketplace">
-            <ion-menu-toggle>
-              <ion-grid>
-                <ion-item class="accordionDer" routerLink="/main/tabs/marketplace">
-                  <ion-icon name="search-outline" slot="start"></ion-icon>
-                  Ver Publicaciones
-                </ion-item>
-                <ion-item class="accordionDer" routerLink="/main/tabs/mis-publicaciones">
-                  <ion-icon name="clipboard-outline" slot="start"></ion-icon>
-                  Mis Publicaciones
-                </ion-item>
-                <ion-item class="accordionDer" routerLink="/main/tabs/renovar-publicacion">
-                  <ion-icon name="refresh-circle-outline" slot="start"></ion-icon>
-                  Renovar Publicaciones
-                </ion-item>
-              </ion-grid>
-            </ion-menu-toggle>
-          </ion-list>
           <!-- ACORDION MARKETPLACE-->
         <ion-item *ngIf="rol == 1" routerLink="/main/tabs/acuerdos">
           <ion-icon name="megaphone-outline" slot="start"></ion-icon>

@@ -59,8 +59,9 @@ export class EstadoCertPage implements OnInit {
     this.getmisEmisores(event);
   }
 
-  evento(){
-    this.alertaService.alerta('Esta esta funcionalidad aún no se encuentra desarrollada');
+  evento(emisor: Emisor){
+   // this.alertaService.alerta('Esta esta funcionalidad aún no se encuentra desarrollada');
+    console.log('Informacion del emisor:' ,emisor);
   }
 
 }
