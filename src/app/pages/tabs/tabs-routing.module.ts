@@ -121,6 +121,10 @@ const routes: Routes = [
         loadChildren: () => import('../solicitar-cert/solicitar-cert.module').then( m => m.SolicitarCertPageModule)
       },
       {
+        path: 'ops-cert',
+        loadChildren: () => import('../ops-cert/ops-cert-routing.module').then( m => m.OpsCertPageRoutingModule)
+      },
+      {
         path: 'marketplace',
         loadChildren: () => import('../marketplace/marketplace.module').then( m => m.MarketplacePageModule)
       },

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmisorService } from 'src/app/servicios/emisor.service';
 import { Emisor } from 'src/app/interfaces/interfaces';
 import { AlertasService } from 'src/app/servicios/alertas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estado-cert',
@@ -15,7 +16,8 @@ export class EstadoCertPage implements OnInit {
   finInfinito =false;
   
   constructor(private emisorService: EmisorService,
-              private alertaService: AlertasService
+              private alertaService: AlertasService,
+              private ruta: Router
               ) { }
 
   ngOnInit() {
@@ -61,7 +63,8 @@ export class EstadoCertPage implements OnInit {
 
   evento(emisor: Emisor){
    // this.alertaService.alerta('Esta esta funcionalidad aún no se encuentra desarrollada');
+    // informacion a enviar por servicio auxiliar
     console.log('Informacion del emisor:' ,emisor);
+    this.ruta.navigateByUrl('main/tabs/ops-cert');
   }
-
 }
