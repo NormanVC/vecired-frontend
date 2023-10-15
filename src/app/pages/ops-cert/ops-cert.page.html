@@ -10,5 +10,42 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- Contenido de tu página -->
+  <ion-card 
+    [ngClass]="{
+      'blueEvent': emisor.emitido === 1,
+      'redEvent': emisor.emitido === 0
+    }">
+    
+    <ion-card-header>
+      <ion-grid>
+        <ion-label
+          *ngIf="emisor.emitido === 1"
+          color="dark"
+          style="font-size: 14px; margin-top: 10px; text-align: justify;"
+        >
+        <ion-label>
+          <ion-text color="secondary"><ion-icon name="checkmark-circle-sharp"></ion-icon></ion-text>
+          <b> Este certificado ha sido generado</b>
+          <p></p>
+          <ion-text color="medium" text-align="justify"><sub>Para acceder a este solo necesitas tu QR o id de solicitud</sub></ion-text>
+        </ion-label>
+        </ion-label>
+        <ion-label
+          *ngIf="emisor.emitido === 0"
+          color="dark"
+          style="font-size: 14px; margin-top: 10px;"
+        >
+        <ion-label>
+          <ion-text color="danger"><ion-icon name="warning"></ion-icon></ion-text>
+          <b> Este certificado aún no ha sido generado</b>
+          <p></p>
+          <ion-text color="medium" text-align="justify"><sub>¡Genéralo haciendo click en el boton 'GENERAR DOCUMENTO'!</sub></ion-text>
+        </ion-label>
+        </ion-label>
+      </ion-grid>
+    </ion-card-header>
+    
+  </ion-card>
 </ion-content>
+
+

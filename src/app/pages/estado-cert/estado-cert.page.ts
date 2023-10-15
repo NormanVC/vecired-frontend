@@ -18,7 +18,7 @@ export class EstadoCertPage implements OnInit {
   constructor(private emisorService: EmisorService,
               private alertaService: AlertasService,
               private ruta: Router
-              ) { }
+                            ) { }
 
   ngOnInit() {
    // this.emisorService.getmisEmisores().subscribe( resp =>{
@@ -64,7 +64,9 @@ export class EstadoCertPage implements OnInit {
   evento(emisor: Emisor){
    // this.alertaService.alerta('Esta esta funcionalidad aún no se encuentra desarrollada');
     // informacion a enviar por servicio auxiliar
-    console.log('Informacion del emisor:' ,emisor);
+    //console.log('Informacion del emisor:' ,emisor);
+    this.emisorService.enviarDatos(emisor);
     this.ruta.navigateByUrl('main/tabs/ops-cert');
+
   }
 }

@@ -122,7 +122,7 @@ const routes: Routes = [
       },
       {
         path: 'ops-cert',
-        loadChildren: () => import('../ops-cert/ops-cert-routing.module').then( m => m.OpsCertPageRoutingModule)
+        loadChildren: () => import('../ops-cert/ops-cert.module').then( m => m.OpsCertPageModule)
       },
       {
         path: 'marketplace',

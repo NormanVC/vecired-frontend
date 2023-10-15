@@ -13,3 +13,29 @@
     font-size: 18px;
     color: rgb(27, 28, 29);
 }
+
+.blueEvent{
+    background-color: rgba(47, 51, 160, 0.185);
+    text-align: justify;
+}
+
+.redEvent{
+    //background-color: #ffb2ae;
+    background-color: rgba(240, 20, 20, 0.300);
+    text-align: start;
+    white-space: normal;
+}
+
+.avisoUnitario{
+    //border: 0.1px #241816 solid;
+    //border-radius: 5%;
+    // border-bottom-left-radius: 3%;
+    // border-bottom-right-radius: 3%;
+    // border-top-left-radius:3%;
+    // border-top-right-radius:3%;
+    box-shadow: 0 0 2em rgba(30, 30, 31, 0.932);
+    //max-height: 95%;
+    //background-color: #d3d3d3;
+    
+    
+}

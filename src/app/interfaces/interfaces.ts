@@ -104,6 +104,8 @@ export interface Emisor {
   certificado?: Certificado;
   comunidad?: Comunidad;
   estado?: number;
+  emitido?: number;
+  existe?: number;
 }
 
 export interface RespuestaComunidad {
