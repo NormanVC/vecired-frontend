@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Emisor } from 'src/app/interfaces/interfaces';
+import { AlertasService } from 'src/app/servicios/alertas.service';
 import { EmisorService } from 'src/app/servicios/emisor.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class OpsCertPage implements OnInit {
   emisor: Emisor ={};
 
   constructor(private ruta: Router,
-              private emisorService: EmisorService
+              private emisorService: EmisorService,
+              private alertasService: AlertasService
     ) { }
 
   ngOnInit() {
@@ -38,5 +40,14 @@ export class OpsCertPage implements OnInit {
       console.log('Este certificado fue existe?',this.emisor.existe);
     });
   }
+  
+  confirmacion(){
+    this.alertasService.alertaDecision('¿Desea generar ahora este certificado? Solo puede generarlo una vez.');
+  }
+
+  descargar(){
+    this.alertasService.alertaDecision('¿Desea descargar este certificado? Solo se puede descargar una vez.');
+  }
+
 
 }

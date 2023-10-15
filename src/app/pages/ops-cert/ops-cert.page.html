@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- INICIO DE CARTA DE ESTADO -->
   <ion-card 
     [ngClass]="{
       'blueEvent': emisor.emitido === 1,
@@ -27,7 +28,7 @@
           <ion-text color="secondary"><ion-icon name="checkmark-circle-sharp"></ion-icon></ion-text>
           <b> Este certificado ha sido generado</b>
           <p></p>
-          <ion-text color="medium" text-align="justify"><sub>Para acceder a este solo necesitas tu QR o id de solicitud</sub></ion-text>
+          <ion-text color="shade" text-align="justify"><sub>Para acceder a este solo necesitas tu QR o id de solicitud</sub></ion-text>
         </ion-label>
         </ion-label>
         <ion-label
@@ -37,15 +38,35 @@
         >
         <ion-label>
           <ion-text color="danger"><ion-icon name="warning"></ion-icon></ion-text>
-          <b> Este certificado aún no ha sido generado</b>
+          <b> Este certificado no ha sido generado</b>
           <p></p>
-          <ion-text color="medium" text-align="justify"><sub>¡Genéralo haciendo click en el boton 'GENERAR DOCUMENTO'!</sub></ion-text>
+          <ion-text color="shade" text-align="justify"><sub>¡Genéralo haciendo click en el botón 'GENERAR DOCUMENTO'!</sub></ion-text>
         </ion-label>
         </ion-label>
       </ion-grid>
     </ion-card-header>
-    
   </ion-card>
+  <!-- FIN DE CARTA DE ESTADO -->
+
+  <!-- INICIO DE MENU BOTONES -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" size="large" color="tertiary">Ver datos del certificado</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 0">Ver QR</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 1" (click)="confirmacion()">Generar Documento</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 0" (click)="descargar()">Descargar Documento</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- FIN DE MENU BOTONES -->
 </ion-content>
 
 

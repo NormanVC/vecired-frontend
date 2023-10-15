@@ -125,6 +125,14 @@ const routes: Routes = [
         loadChildren: () => import('../ops-cert/ops-cert.module').then( m => m.OpsCertPageModule)
       },
       {
+        path: 'ver-doc',
+        loadChildren: () => import('../ver-doc/ver-doc.module').then( m => m.VerDocPageModule)
+      },
+      {
+        path: 'validate',
+        loadChildren: () => import('../validate/validate.module').then( m => m.ValidatePageModule)
+      },
+      {
         path: 'marketplace',
         loadChildren: () => import('../marketplace/marketplace.module').then( m => m.MarketplacePageModule)
       },
