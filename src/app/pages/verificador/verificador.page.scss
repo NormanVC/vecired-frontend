@@ -34,3 +34,16 @@
     border: 0px solid #000000;
     margin: 0;
 }
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background-color:#aeaeae;
+}
+
+.banner ion-icon {
+    font-size: 10em;
+    color: azure;
+}
