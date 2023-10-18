@@ -14,14 +14,14 @@
     </ion-col>
   </ion-row>
 
+  <ion-card class="caja-sm">
   <form (ngSubmit)="login()" #logearse="ngForm">
     <ion-grid fixed>
       <ion-row>
         <ion-col>
-
           <ion-list class="bg-transparent">
-
-            <ion-item color="none">
+            <ion-text color="dark" class="poppins">Iniciar sesión</ion-text>
+            <ion-item color="none" class="lista-sm">
               <ion-label position="floating" color="light" class="my-label">
                 <ion-icon name="mail" item-start></ion-icon>
                 Correo Electronico
@@ -30,7 +30,7 @@
               </ion-input>
             </ion-item>
 
-            <ion-item color="none">
+            <ion-item color="none" class="lista-sm">
               <ion-label position="floating" color="light" class="my-label">
                 <ion-icon name="lock-closed" item-start></ion-icon>
                 Contraseña
@@ -44,8 +44,8 @@
       </ion-row>
       
       <p>
-        <ion-text color="light" class="my-label2" >
-          <strong>Olvido su contraseña?</strong>
+        <ion-text color="light" class="my-label3" >
+          ¿Has olvidado tu contraseña?
         </ion-text>
       </p>
 
@@ -59,12 +59,13 @@
 
     </ion-grid>
   </form>
-
+  
   <p (click)="registrarse()">
     <ion-text color="light" class="my-label">
       <strong>Registrarse</strong>
     </ion-text>
   </p>
+</ion-card>
 
 </ion-content>
 
