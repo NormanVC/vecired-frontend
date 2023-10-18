@@ -3,7 +3,7 @@
         --padding-top: 10px;
         position: relative;
 
-        .half-gradient {
+        .mitad-gradiente {
             position: absolute;
             top: 0;
             left: 0;
@@ -12,11 +12,7 @@
             background: linear-gradient(135deg, #110A3B, #2f32a0);
         }
 
-        .lower-half {
-            position: relative;
-            top: 50vh;
-            background-color: #707070;
-        }
+
     }
 }
 
