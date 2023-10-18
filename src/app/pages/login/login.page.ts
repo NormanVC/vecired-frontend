@@ -92,4 +92,9 @@ export class LoginPage implements OnInit {
    this.pushService.setUserId(this.arrayComunidades);
 
   } */
+
+
+  verificador(){
+    this.navCtrl.navigateRoot('/verificador');
+  }
 }
