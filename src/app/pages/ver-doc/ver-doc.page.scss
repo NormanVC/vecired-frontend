@@ -1,0 +1,27 @@
+.vecired {
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
+}
+
+
+
+:host {
+    ion-content {
+        --background: linear-gradient(135deg, #110A3B, #2f32a0);
+        --padding-top: 10px;
+    }
+    .cabecera{
+        --background: #110A3B;
+    }
+}
+
+.caja-sm{
+    left: 7%;
+    width: 80%;
+    height: 60%;
+    margin-top: 5%;
+    border-radius: 20px;
+    align-self: center;
+}

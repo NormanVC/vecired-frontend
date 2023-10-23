@@ -49,5 +49,11 @@ export class OpsCertPage implements OnInit {
     this.alertasService.alertaDecision('¿Desea descargar este certificado? Solo se puede descargar una vez.');
   }
 
+  verdocumento(emisor: Emisor){
+  //se comprueba que se esta mandando los datos integros
+    //console.log(this.emisor);
+    this.emisorService.enviarDatos(emisor);
+    this.ruta.navigateByUrl('/main/tabs/ver-doc');
+  }
 
 }

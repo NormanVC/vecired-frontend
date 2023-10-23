@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ver-doc</ion-title>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="atras()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="vecired" color="light">VeciRed</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+  <ion-card class="caja-sm">
+  
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-grid>
+            <!-- Filas de la tabla con *ngFor -->
+            <ion-row>
+              <ion-col size="6"><b>Nombre del Certificado</b></ion-col>
+              <ion-col size="6">{{emisor.certificado.titulo}}</ion-col>
+              <ion-col size="6"><b>Nombre comunidad</b></ion-col>
+              <ion-col size="6">{{emisor.comunidad.nombreComunidad}}</ion-col>
+                       <ion-col size="6"><b>Asignado a</b></ion-col>
+              <ion-col size="6">{{emisor.usuario.nombre}}</ion-col>
+              <ion-col size="6"><b>Fecha de emision</b></ion-col>
+              <ion-col size="6">{{emisor.fechaemision | date: 'dd-MM-yyyy'}}</ion-col>
+              <ion-col size="6"><b>Encargado comunidad</b></ion-col>
+              <ion-col size="6">{{emisor.certificado.replegal}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  
 
 </ion-content>
