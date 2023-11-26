@@ -133,26 +133,6 @@ const routes: Routes = [
         loadChildren: () => import('../validate/validate.module').then( m => m.ValidatePageModule)
       },
       {
-        path: 'marketplace',
-        loadChildren: () => import('../marketplace/marketplace.module').then( m => m.MarketplacePageModule)
-      },
-      {
-        path: 'mis-publicaciones',
-        loadChildren: () => import('../mis-publicaciones/mis-publicaciones.module').then( m => m.MisPublicacionesPageModule)
-      },
-      {
-        path: 'crear-publicacion',
-        loadChildren: () => import('../crear-publicacion/crear-publicacion.module').then( m => m.CrearPublicacionPageModule)
-      },
-      {
-        path: 'editar-publicacion',
-        loadChildren: () => import('../editar-publicacion/editar-publicacion.module').then( m => m.EditarPublicacionPageModule)
-      },
-      {
-        path: 'renovar-publicacion',
-        loadChildren: () => import('../renovar-publicacion/renovar-publicacion.module').then( m=> m.RenovarPublicacionPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

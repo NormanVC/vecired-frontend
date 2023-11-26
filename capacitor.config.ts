@@ -1,9 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  //appId: 'io.ionic.starter',
-  appId: 'com.ubb.veciRed',
-  appName: 'veciRed',
+  appId: 'com.ubb.vecired',
+  appName: 'com.ubb.vecired',
   webDir: 'www',
   bundledWebRuntime: false
 };

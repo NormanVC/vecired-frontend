@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import {FileOpener} from '@ionic-native/file-opener/ngx'
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
@@ -31,7 +32,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     {
     provide:
       RouteReuseStrategy,
-      useClass: IonicRouteStrategy }],
+      useClass: IonicRouteStrategy }, FileOpener],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

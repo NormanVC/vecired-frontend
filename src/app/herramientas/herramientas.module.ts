@@ -15,8 +15,6 @@ import { CertificadoComponent } from './certificado/certificado.component';
 import { CertificadoCreadoComponent } from './certificado-creado/certificado-creado.component';
 import { EmisoresComponent } from './emisores/emisores.component';
 import { EmisorCreadoComponent } from './emisor-creado/emisor-creado.component';
-import { PublicacionComponent } from './publicacion/publicacion.component';
-import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 
 
 
@@ -35,8 +33,6 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
     CertificadoCreadoComponent,
     EmisoresComponent,
     EmisorCreadoComponent,
-    PublicacionComponent,
-    PublicacionesComponent
   ],
   imports: [
     CommonModule,
@@ -53,8 +49,6 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
     GraficoComponent,
     CertificadoComponent,
     EmisoresComponent,
-    PublicacionComponent,
-    PublicacionesComponent
   ]
 })
 export class HerramientasModule { }

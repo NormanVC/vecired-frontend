@@ -18,7 +18,7 @@ export class VerificadorPage implements OnInit {
 
 
     //Toast, to do configurarla por si el input viene vacio o es menor a 24
-    this.alertasService.presentToast('ALL THE BOYS  SAY WOW WOW ');
+    this.alertasService.presentToast('Aún no se implementa el buscador.');
   }
 
 }
