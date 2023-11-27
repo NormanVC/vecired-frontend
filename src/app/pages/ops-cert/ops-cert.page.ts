@@ -4,8 +4,8 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Emisor } from 'src/app/interfaces/interfaces';
 import { AlertasService } from 'src/app/servicios/alertas.service';
 import { EmisorService } from 'src/app/servicios/emisor.service';
-import {Plugins} from '@capacitor/core'
-const  {FileSystem} = Plugins;
+import { Plugins } from '@capacitor/core';
+const { Filesystem, FilesystemDirectory } = Plugins;
 
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -75,8 +75,8 @@ export class OpsCertPage implements OnInit {
       //console.log(this.emisor);
       //conseguimos la id de solicitud :3
       //console.log(this.emisor._id);
-      console.log('Este certificado fue emitido?',this.emisor.emitido);
-      console.log('Este certificado fue existe?',this.emisor.existe);
+      //console.log('Este certificado fue emitido?',this.emisor.emitido);
+      //console.log('Este certificado fue existe?',this.emisor.existe);
     });
   }
   
@@ -178,7 +178,18 @@ export class OpsCertPage implements OnInit {
 
               if(this.plt.is('cordova')){
                 this.pdfObj.getBase64(async (data) =>{
-                  // LOGICA ACA
+                  try{
+                    let path =`pdf/CertificadoVeciRed_${Date.now()}.pdf`;
+                    const resultado = await Filesystem.writeFile({
+                      path,
+                      data,
+                      directory: FilesystemDirectory.Documents,
+                      recursive: true
+                    });
+                    this.fileOpener.open(`${resultado.uri}`,'application/pdf');
+                  } catch(e){
+                    console.error('No se pudo crear PDF',e);
+                  }
                 });
               }else {
                 this.pdfObj.download('CertificadoVeciRed_'+ fechaactual +'.pdf');
@@ -207,5 +218,8 @@ export class OpsCertPage implements OnInit {
     this.ruta.navigateByUrl('/main/tabs/ver-doc');
   }
 
+  codQR(idSolicitud: string){
+    console.log(this.emisor._id);
+  }
 }
 

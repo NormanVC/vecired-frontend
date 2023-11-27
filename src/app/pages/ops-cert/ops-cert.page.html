@@ -56,7 +56,7 @@
         <ion-button expand="block" size="large" color="tertiary" (click)="verdocumento(emisor)">Ver datos del certificado</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 0">Ver QR</ion-button>
+        <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 0" (click)= "codQR(this.emisor._id)">Ver QR</ion-button>
       </ion-col>
       <ion-col>
         <ion-button expand="block" size="large" color="tertiary" [disabled]="emisor.emitido === 1" (click)="confirmacion(this.emisor._id)">Generar Documento</ion-button>
