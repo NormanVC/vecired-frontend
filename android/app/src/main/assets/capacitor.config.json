@@ -1,0 +1,6 @@
+{
+	"appId": "com.ubb.vecired",
+	"appName": "VeciRed",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

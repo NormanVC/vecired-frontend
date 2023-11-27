@@ -18,6 +18,7 @@ export class EmisorService {
   Objeto = new ReplaySubject<{}>();
   nuevoEmisor = new EventEmitter<Emisor>();
 
+
   constructor(private http: HttpClient, private usuarioService: UsuarioService,
               private alertaService: AlertasService) {}
 
@@ -56,6 +57,18 @@ export class EmisorService {
     });
 
     return this.http.get<EmisorCreados>(`${url}/emisor/miscertificados?pagina=${pagina}`, { headers });
+  }
+
+  cambiarEstado(idSolicitud: string) {
+    const headers = new HttpHeaders({
+      'UToken': this.usuarioService.userToken,
+    });
+
+    const solicitud = { _id: idSolicitud };
+    this.alertaService.presentToast('Solicitud aceptada exitosamente');
+
+    return this.http.post(`${url}/emisor/se-emite`, solicitud, { headers });
+
   }
 
   crearSolicitud(emisor){

@@ -1,0 +1,27 @@
+.vecired {
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
+}
+
+.cabecera{
+    --background: linear-gradient(135deg, #110A3B, #2f32a0);
+}
+
+.loader{
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    width: 100px;
+    height: 100px;
+}
+
+.mi-texto{
+    font-style: italic;
+    position: fixed;
+    top: 60%;
+    left: 20%;
+    right: 20%;
+    
+}

@@ -20,7 +20,8 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
-  },  {
+  },
+  {
     path: 'verificador',
     loadChildren: () => import('./pages/verificador/verificador.module').then( m => m.VerificadorPageModule)
   },

@@ -10,6 +10,7 @@ const  {FileSystem} = Plugins;
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { HttpClient } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function fechaActual() {
@@ -32,20 +33,33 @@ export class OpsCertPage implements OnInit {
 
   aceptar: any;
   logoData = null;
+  vacio: boolean = false;
+  pdfObj= null;
 
   constructor(private ruta: Router,
               private emisorService: EmisorService,
               private alertasService: AlertasService,
               private fileOpener: FileOpener,
-              private http: HttpClient
-    ) { }
+              private http: HttpClient,
+              private plt: Platform
+                  ) { }
 
   ngOnInit() {
-    this.obtenerEmisor();
-    this.cargarlogo();
+    
+      this.obtenerEmisor();
+      this.cargarlogo();
+      this.estavacio();
+    
+
+
   }
 
-  
+  estavacio() {
+    if (Object.keys(this.emisor).length === 0) {
+      this.ruta.navigateByUrl('/main/tabs/loader');
+      this.vacio = true;  
+    }
+  }
 
   atras(){
     this.ruta.navigateByUrl('/main/tabs/estado-cert');
@@ -75,90 +89,109 @@ export class OpsCertPage implements OnInit {
       lector.readAsDataURL(res);
     });
   }
+  
 
-  confirmacion() {
+  confirmacion(idSolicitud: string) {
     const fechaactual = fechaActual();
     let logo =  {image: this.logoData, width: 150, length:100};
-
+    //console.log(idSolicitud);
     this.alertasService.alertaDecision('¿Desea generar ahora este certificado? Solo puede generarlo una vez.').then(
       respuesta => {
         this.aceptar = respuesta['data'];
         if (this.aceptar === true) {
-          const documento = {
-            content: [
-              //logo
-              logo,
-              // Título
-              { text: this.emisor.certificado.titulo, style: 'header' },
-          
-              // Info usuario
-              { text: 'Presentado a:', style: 'subheader' },
-              { text: this.emisor.usuario.nombre, style: 'nombreusuario' },
-              { text: 'R.U.T:', style: 'subheader'},
-              { text: this.emisor.usuario.rut, style:'subheader'},
-              { text: 'Direccion:', style: 'subheader'},
-              { text: this.emisor.usuario.direccion, style:'descripcion'},
-      
-          
-              // Descripción
-              { text: 'Descripción:', style: 'subheader' },
-              { text: this.emisor.certificado.descripcion, style: 'descripcion' },
-          
-              // Nombre de la comunidad
-              { text: 'Comunidad:', style: 'subheader' },
-              { text: this.emisor.comunidad.nombreComunidad, style: 'nombrecomunidad' },
-              { text: 'Fecha emisión de certificado:', style: 'subheader'},
-              { text: fechaactual, style: 'subheader'},
-          
-              // Datos del representante de la comunidad
-              { text: 'Representante de la Comunidad:', style: 'subheader' },
-              { text: this.emisor.certificado.replegal, style: 'representante' },
-              { text: 'Número de Contacto:', style: 'subheader' },
-              { text: this.emisor.certificado.contacto, style: 'contacto' },
-      
-              // QR ,  SE DEBE CAMBIAR LA DIRECCION CUANDO SE SAQUE DE LOCALHOST
-                { qr: 'https://www.bing.com/search?pglt=41&q=' +this.emisor._id, fit: '50'  },
-      
+          this.emisorService.cambiarEstado(idSolicitud).subscribe(
+            (respuesta) => {
+              const documento = {
+                content: [
+                  //logo
+                  logo,
+                  // Título
+                  { text: this.emisor.certificado.titulo, style: 'header' },
               
-            ],
+                  // Info usuario
+                  { text: 'Presentado a:', style: 'subheader' },
+                  { text: this.emisor.usuario.nombre, style: 'nombreusuario' },
+                  { text: 'R.U.T:', style: 'subheader'},
+                  { text: this.emisor.usuario.rut, style:'subheader'},
+                  { text: 'Direccion:', style: 'subheader'},
+                  { text: this.emisor.usuario.direccion, style:'descripcion'},
           
-            styles: {
-              header: {
-                fontSize: 18,
-                bold: true,
-                alignment: 'center',
-                margin: [0, 0, 0, 20]  // margen inferior
-              },
-              subheader: {
-                fontSize: 14,
-                bold: true,
-                margin: [0, 10, 0, 5]
-              },
-              nombreusuario: {
-                fontSize: 12,
-                margin: [0, 0, 0, 10]
-              },
-              descripcion: {
-                fontSize: 12,
-                margin: [0, 0, 0, 10]
-              },
-              nombrecomunidad: {
-                fontSize: 12,
-                margin: [0, 0, 0, 10]
-              },
-              representante: {
-                fontSize: 12,
-                margin: [0, 0, 0, 10]
-              },
-              contacto: {
-                fontSize: 12,
-                margin: [0, 0, 0, 20]
+              
+                  // Descripción
+                  { text: 'Descripción:', style: 'subheader' },
+                  { text: this.emisor.certificado.descripcion, style: 'descripcion' },
+              
+                  // Nombre de la comunidad
+                  { text: 'Comunidad:', style: 'subheader' },
+                  { text: this.emisor.comunidad.nombreComunidad, style: 'nombrecomunidad' },
+                  { text: 'Fecha emisión de certificado:', style: 'subheader'},
+                  { text: fechaactual, style: 'subheader'},
+              
+                  // Datos del representante de la comunidad
+                  { text: 'Representante de la Comunidad:', style: 'subheader' },
+                  { text: this.emisor.certificado.replegal, style: 'representante' },
+                  { text: 'Número de Contacto:', style: 'subheader' },
+                  { text: this.emisor.certificado.contacto, style: 'contacto' },
+          
+                  // QR ,  SE DEBE CAMBIAR LA DIRECCION CUANDO SE SAQUE DE LOCALHOST
+                    { qr: 'https://www.bing.com/search?pglt=41&q=' +this.emisor._id, fit: '50'  },
+          
+                  
+                ],
+              
+                styles: {
+                  header: {
+                    fontSize: 18,
+                    bold: true,
+                    alignment: 'center',
+                    margin: [0, 0, 0, 20]  // margen inferior
+                  },
+                  subheader: {
+                    fontSize: 14,
+                    bold: true,
+                    margin: [0, 10, 0, 5]
+                  },
+                  nombreusuario: {
+                    fontSize: 12,
+                    margin: [0, 0, 0, 10]
+                  },
+                  descripcion: {
+                    fontSize: 12,
+                    margin: [0, 0, 0, 10]
+                  },
+                  nombrecomunidad: {
+                    fontSize: 12,
+                    margin: [0, 0, 0, 10]
+                  },
+                  representante: {
+                    fontSize: 12,
+                    margin: [0, 0, 0, 10]
+                  },
+                  contacto: {
+                    fontSize: 12,
+                    margin: [0, 0, 0, 20]
+                  }
+                }
+              };
+            
+              this.pdfObj = pdfMake.createPdf(documento);
+
+              if(this.plt.is('cordova')){
+                this.pdfObj.getBase64(async (data) =>{
+                  // LOGICA ACA
+                });
+              }else {
+                this.pdfObj.download('CertificadoVeciRed_'+ fechaactual +'.pdf');
               }
+              
+              window.location.reload();
+             
+            },
+            (error) => {
+              console.error('Error al aprobar la solicitud: ', error);
             }
-          };
+          );
         
-          pdfMake.createPdf(documento).download('CertificadoVeciRed_'+ fechaactual +'.pdf');
-          
         } else {
           this.alertasService.presentToast('Operación cancelada');
         }
