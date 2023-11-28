@@ -4,8 +4,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Emisor } from 'src/app/interfaces/interfaces';
 import { AlertasService } from 'src/app/servicios/alertas.service';
 import { EmisorService } from 'src/app/servicios/emisor.service';
-import { Plugins } from '@capacitor/core';
-const { Filesystem, FilesystemDirectory } = Plugins;
+import { Filesystem, Directory } from '@capacitor/filesystem';
 
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -35,6 +34,7 @@ export class OpsCertPage implements OnInit {
   logoData = null;
   vacio: boolean = false;
   pdfObj= null;
+  pdfBase64 = null;
 
   constructor(private ruta: Router,
               private emisorService: EmisorService,
@@ -177,20 +177,37 @@ export class OpsCertPage implements OnInit {
               this.pdfObj = pdfMake.createPdf(documento);
 
               if(this.plt.is('cordova')){
-                this.pdfObj.getBase64(async (data) =>{
-                  try{
-                    let path =`pdf/CertificadoVeciRed_${Date.now()}.pdf`;
-                    const resultado = await Filesystem.writeFile({
-                      path,
-                      data,
-                      directory: FilesystemDirectory.Documents,
-                      recursive: true
-                    });
-                    this.fileOpener.open(`${resultado.uri}`,'application/pdf');
-                  } catch(e){
-                    console.error('No se pudo crear PDF',e);
-                  }
+                // se transforma a base64
+                this.pdfObj.getBase64((data) => {
+                  this.pdfBase64 = data;
+                  console.log(this.pdfBase64);
                 });
+
+                const fileName = 'CertificadoVecired.pdf';
+
+                try {
+                  Filesystem.writeFile({
+                    path: fileName,
+                    data: this.pdfBase64,
+                    directory: Directory.Documents
+                    // encoding: FilesystemEncoding.UTF8
+                  }).then((writeFileResult) => {
+                    Filesystem.getUri({
+                        directory: Directory.Documents,
+                        path: fileName
+                    }).then((getUriResult) => {
+                        const path = getUriResult.uri;
+                        this.fileOpener.open(path, 'application/pdf')
+                        .then(() => console.log('File is opened'))
+                        .catch(error => console.log('Error openening file', error));
+                    }, (error) => {
+                        console.log(error);
+                    });
+                  });
+                } catch (error) {
+                  console.error('Unable to write file', error);
+                }
+
               }else {
                 this.pdfObj.download('CertificadoVeciRed_'+ fechaactual +'.pdf');
               }
