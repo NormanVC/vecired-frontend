@@ -137,6 +137,10 @@ const routes: Routes = [
         loadChildren: () => import('../loader/loader.module').then(m => m.LoaderPageModule)
       },
       {
+        path: 'codigo-qr',
+        loadChildren: () => import('../codigo-qr/codigo-qr.module').then(m => m.CodigoQrPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

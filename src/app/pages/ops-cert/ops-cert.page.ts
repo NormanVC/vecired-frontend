@@ -235,8 +235,10 @@ export class OpsCertPage implements OnInit {
     this.ruta.navigateByUrl('/main/tabs/ver-doc');
   }
 
-  codQR(idSolicitud: string){
-    console.log(this.emisor._id);
+  codQR(emisor: Emisor){
+    //console.log(this.emisor._id);
+    this.emisorService.enviarDatos(emisor);
+    this.ruta.navigateByUrl('main/tabs/codigo-qr');
   }
 }
 

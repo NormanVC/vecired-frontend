@@ -24,10 +24,8 @@ const routes: Routes = [
   {
     path: 'verificador',
     loadChildren: () => import('./pages/verificador/verificador.module').then( m => m.VerificadorPageModule)
-  },  {
-    path: 'codigo-qr',
-    loadChildren: () => import('./pages/codigo-qr/codigo-qr.module').then( m => m.CodigoQrPageModule)
   },
+
 
 
 
