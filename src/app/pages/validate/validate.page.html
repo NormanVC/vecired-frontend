@@ -17,20 +17,35 @@
 <ion-content>
 
   <ion-card class="top">
-  <div class="blueBanner" *ngIf="emisor.emitido === 1">
-    <ion-icon name="checkmark-sharp"></ion-icon>
-  </div>
-  <ng-template #redBanner>
-    <div class="redBanner" *ngIf="emisor.emitido === 0 || emisor.emitido === undefined">
-      <ion-icon name="close-circle-outline"></ion-icon>
-    </div>
-  </ng-template>
-    <ion-card-header>
-      <ion-card-title class="titulo2">Validador de documentos</ion-card-title>
-      <ion-card-subtitle>Aquí puedes ingresar la ID de solicitud de certificado y  verificar su validez.</ion-card-subtitle>
-    </ion-card-header>
-  
+    <ng-container *ngIf="loading; else content">
+      <ion-spinner class="loader" color="tertiary"></ion-spinner>
+    </ng-container>
+    <ng-template #content>
+      <ng-container *ngIf="emisor.emitido === 1; else redBanner">
+        <div class="blueBanner">
+          <ion-icon name="checkmark-sharp"></ion-icon>
+        </div>
+        <ion-card class="bluecard">
+        <ion-label>
+          <ion-text color="secondary"><ion-icon name="checkmark-circle-sharp"></ion-icon></ion-text>
+          <b> Verificacion exitosa</b>
+          <p></p>
+        </ion-label>
+      </ion-card>
 
+        <ion-card-header>
+          <ion-card-subtitle class="sub">Este certificado fue solicitado en {{emisor.fechaemision | date : 'd/M/yy'}}  en 
+            {{emisor.comunidad.nombreComunidad}} ubicada en la comuna de {{emisor.comunidad.comuna}} de la región
+            de {{emisor.comunidad.region}}.</ion-card-subtitle>
+        </ion-card-header>
+      </ng-container>
+      <ng-template #redBanner>
+        <div class="redBanner">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </div>
+      </ng-template>
+    </ng-template>
+    
   </ion-card>
-
+  
 </ion-content>

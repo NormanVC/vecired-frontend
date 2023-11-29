@@ -13,6 +13,7 @@ export class ValidatePage implements OnInit {
   emisor: Emisor={};
   usuario: Usuario={};
   comunidad: Comunidad={};
+  loading: boolean = true;
  
   constructor( private emisorService: EmisorService,
               private ruta: ActivatedRoute
@@ -24,23 +25,23 @@ export class ValidatePage implements OnInit {
 
 
   IddesdeURL() {
-    this.ruta.params.subscribe(params => {
+    this.ruta.params.subscribe((params) => {
       const idSolicitud = params['idSolicitud'];
-  
+
       this.emisorService.getID(idSolicitud).subscribe(
         (respuesta: any) => {
           this.emisor = respuesta.resultado;
-
-          //console.log(this.emisor);
-          //console.log(this.emisor.motivo)
-          console.log(this.emisor.emitido);
+          this.loading = false; // Marcamos que la carga ha terminado
         },
         (error) => {
           console.error('Error al obtener datos:', error);
+          this.loading = false; // También marcamos que la carga ha terminado en caso de error
         }
       );
     });
+  
   }
+
 
 
 }
