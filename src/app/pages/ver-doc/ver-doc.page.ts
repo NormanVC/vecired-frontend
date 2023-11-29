@@ -29,7 +29,7 @@ export class VerDocPage implements OnInit {
   obtenerEmisores(){
     this.emisorService.Objeto.subscribe((respuesta: any) =>{
       this.emisor = respuesta;
-     // console.log(this.emisor);
+     console.log(this.emisor);
     });
   }
 

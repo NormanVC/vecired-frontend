@@ -6,6 +6,7 @@ import { UsuarioService } from './usuario.service';
 import { ReplaySubject } from 'rxjs';
 import { Emisor } from '../interfaces/interfaces';
 import { AlertasService } from './alertas.service';
+import { ActivatedRoute } from '@angular/router';
 
 const url = environment.url;
 
@@ -19,8 +20,10 @@ export class EmisorService {
   nuevoEmisor = new EventEmitter<Emisor>();
 
 
-  constructor(private http: HttpClient, private usuarioService: UsuarioService,
-              private alertaService: AlertasService) {}
+  constructor(private http: HttpClient,
+              private usuarioService: UsuarioService,
+              private alertaService: AlertasService,
+              private ruta: ActivatedRoute) {}
 
   getEmisor(pagina: number) {
     const headers = new HttpHeaders({
@@ -94,6 +97,12 @@ export class EmisorService {
   enviarDatos(datos) {
     const aux = datos;
     this.Objeto.next(aux);
+  }
+
+  getID(idSolicitud:string) {
+    console.log('ID de la URL:', idSolicitud);
+
+      return this.http.get(`${url}/emisor/obtener-datos/${idSolicitud}`);
   }
 
 }

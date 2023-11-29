@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>validate</ion-title>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" color="light" name=""></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="vecired" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Detalles de la Solicitud</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Motivo: {{ emisor.motivo }}</ion-label>
+      <ion-label>Fecha de Emisión: {{ emisor.fechaemision | date:'short' }}</ion-label>
+      <!-- Agrega más propiedades según sea necesario -->
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

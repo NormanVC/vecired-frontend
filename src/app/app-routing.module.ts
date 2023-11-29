@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { UsuarioGuard } from './servicios/usuario.guard';
+import { ValidatePage } from './pages/validate/validate.page';
 
 const routes: Routes = [
   {
@@ -25,7 +26,14 @@ const routes: Routes = [
     path: 'verificador',
     loadChildren: () => import('./pages/verificador/verificador.module').then( m => m.VerificadorPageModule)
   },
-
+  {
+    path:'validate',
+    loadChildren: () => import('./pages/validate/validate.module').then(m => m.ValidatePageModule)
+  },
+  {
+    path: 'validate/:idSolicitud',
+    component: ValidatePage,
+  },
 
 
 

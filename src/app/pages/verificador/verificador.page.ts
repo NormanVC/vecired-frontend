@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Emisor } from 'src/app/interfaces/interfaces';
 import { AlertasService } from 'src/app/servicios/alertas.service';
 
 @Component({
@@ -8,17 +10,29 @@ import { AlertasService } from 'src/app/servicios/alertas.service';
 })
 export class VerificadorPage implements OnInit {
   solicitud: string;
-  constructor(private alertasService: AlertasService) { }
+
+  emisor: Emisor ={};
+
+  constructor(private alertasService: AlertasService,
+              private ruta: Router,
+    ) { }
 
   ngOnInit() {
+    this.limpiar();
+  }
+
+  limpiar() {
+    this.solicitud = '';
   }
 
   verificar(){
-    console.log(this.solicitud);
+    if (this.solicitud && this.solicitud.length <= 24) {
+      const idSolicitud = this.solicitud;
+      this.ruta.navigate(['/validate', idSolicitud]);
+    } else {
+      this.alertasService.alerta('El Id de solicitud ingresado no es válido.');
+    }
 
-
-    //Toast, to do configurarla por si el input viene vacio o es menor a 24
-    this.alertasService.presentToast('Aún no se implementa el buscador.');
   }
 
 }

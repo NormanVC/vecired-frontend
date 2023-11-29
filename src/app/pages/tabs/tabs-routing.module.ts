@@ -129,10 +129,6 @@ const routes: Routes = [
         loadChildren: () => import('../ver-doc/ver-doc.module').then( m => m.VerDocPageModule)
       },
       {
-        path: 'validate',
-        loadChildren: () => import('../validate/validate.module').then( m => m.ValidatePageModule)
-      },
-      {
         path: 'loader',
         loadChildren: () => import('../loader/loader.module').then(m => m.LoaderPageModule)
       },
