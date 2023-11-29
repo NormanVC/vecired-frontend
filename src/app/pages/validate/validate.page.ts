@@ -27,14 +27,13 @@ export class ValidatePage implements OnInit {
     this.ruta.params.subscribe(params => {
       const idSolicitud = params['idSolicitud'];
   
-      // Llama al servicio y asigna la respuesta a this.emisor
       this.emisorService.getID(idSolicitud).subscribe(
         (respuesta: any) => {
-          // Ajusta la propiedad dependiendo de cómo esté estructurada tu respuesta
           this.emisor = respuesta.resultado;
 
-          console.log(this.emisor);
-          console.log(this.emisor.motivo)
+          //console.log(this.emisor);
+          //console.log(this.emisor.motivo)
+          console.log(this.emisor.emitido);
         },
         (error) => {
           console.error('Error al obtener datos:', error);

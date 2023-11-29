@@ -16,15 +16,21 @@
 </ion-header>
 <ion-content>
 
-  <ion-card>
+  <ion-card class="top">
+  <div class="blueBanner" *ngIf="emisor.emitido === 1">
+    <ion-icon name="checkmark-sharp"></ion-icon>
+  </div>
+  <ng-template #redBanner>
+    <div class="redBanner" *ngIf="emisor.emitido === 0 || emisor.emitido === undefined">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </div>
+  </ng-template>
     <ion-card-header>
-      <ion-card-title>Detalles de la Solicitud</ion-card-title>
+      <ion-card-title class="titulo2">Validador de documentos</ion-card-title>
+      <ion-card-subtitle>Aquí puedes ingresar la ID de solicitud de certificado y  verificar su validez.</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
-      <ion-label>Motivo: {{ emisor.motivo }}</ion-label>
-      <ion-label>Fecha de Emisión: {{ emisor.fechaemision | date:'short' }}</ion-label>
-      <!-- Agrega más propiedades según sea necesario -->
-    </ion-card-content>
+  
+
   </ion-card>
 
 </ion-content>

@@ -8,3 +8,43 @@
 .cabecera{
     --background: linear-gradient(135deg, #110A3B, #2f32a0);
 }
+
+
+
+.top {
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 0px solid white;
+    box-shadow:none !important;
+    margin: 0;
+}
+
+
+
+.blueBanner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background-color: #2f33a02f;
+}
+
+.blueBanner ion-icon {
+    font-size: 10em;
+    color: azure;
+}
+
+.redBanner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background-color: #f014144d;
+
+}
+
+.redBanner ion-icon {
+    font-size: 10em;
+    color: azure;
+}
