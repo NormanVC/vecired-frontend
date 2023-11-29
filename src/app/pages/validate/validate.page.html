@@ -38,11 +38,80 @@
             {{emisor.comunidad.nombreComunidad}} ubicada en la comuna de {{emisor.comunidad.comuna}} de la región
             de {{emisor.comunidad.region}}.</ion-card-subtitle>
         </ion-card-header>
-      </ng-container>
+        <br>
+        <ion-text class="grande1">{{apellidoParseado}}</ion-text>
+        <br>
+        <ion-text class="mid1">Apellidos</ion-text>
+        <br>
+        <ion-text class="grande1">{{nombreParseado}}</ion-text>
+        <br>
+        <ion-text class="mid1">Nombre </ion-text>
+        <br>
+        <ion-text class="grande1">{{emisor.usuario.rut}}</ion-text>
+        <br>
+        <ion-text class="mid1">Rol Unico Tributario (RUT)</ion-text>
+        <br>
+        <br>
+        <br>
+        <ion-text class="smol">Domiciliado en: {{emisor.usuario.direccion}}</ion-text>
+        <br>
+        <br>
+        <ion-text class="smoler">{{apellidoParseado}}<{{nombreParseado}}</ion-text>
+        <br>
+        <br>
+
+
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+ 
+            <ion-col size="12" class="ion-text-center">
+              <ion-button shape="circle" (click)="aCasa()">
+                <ion-icon slot="icon-only" name="home-sharp"></ion-icon>
+              </ion-button> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        
+              </ng-container>
       <ng-template #redBanner>
         <div class="redBanner">
           <ion-icon name="close-circle-outline"></ion-icon>
         </div>
+        <ion-card class="redcard">
+        <ion-label>
+          <ion-text color="danger"><ion-icon name="warning"></ion-icon></ion-text>
+          <b> Verificacion fallida</b>
+          <p></p>
+        </ion-label>
+        </ion-card>
+
+        <ion-card-header>
+          <ion-card-subtitle class="sub">La ID de la solicitud proporcionada no dió resultados, lo que significa que el
+            id entregado no es valido o no coincidió con ningún ID dentro de la base de datos de VeciRed, intente escribiendo denuevo la ID
+            o asegurandose que el QR se puede leer correctamente.</ion-card-subtitle>
+        </ion-card-header>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+ 
+            <ion-col size="12" class="ion-text-center">
+              <ion-button shape="circle" (click)="aCasa()">
+                <ion-icon slot="icon-only" name="home-sharp"></ion-icon>
+              </ion-button> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
       </ng-template>
     </ng-template>
     

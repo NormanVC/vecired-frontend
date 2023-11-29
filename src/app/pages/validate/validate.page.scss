@@ -40,7 +40,7 @@
     justify-content: center;
     align-items: center;
     height: 50%;
-    background-color: #f014144d;
+    background-color: #f014148c;
 
 }
 
@@ -70,4 +70,40 @@
 .bluecard{
     background-color: rgba(47, 51, 160, 0.185);
     padding: 5%;
+}
+
+.redcard{
+   background-color:  #f014144d;
+   padding: 5%;
+}
+.grande1 {
+    font-size: x-large;
+    font-weight: bolder;
+    padding-left: 10%;
+}
+
+.mid1{
+    font-size: smaller;
+    font-weight: lighter;
+    padding-left: 10%;
+}
+
+
+.smol {
+    font-size: small;
+    font-style: italic;
+    padding-left: 10%;
+
+}
+
+.smoler {
+    font-size: x-small;
+    font-style: italic;
+    padding-left: 10%;
+}
+
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 56px;
+    height: 56px;
 }
