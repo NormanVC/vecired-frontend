@@ -5,7 +5,6 @@ import { Emisor } from 'src/app/interfaces/interfaces';
 import { AlertasService } from 'src/app/servicios/alertas.service';
 import { EmisorService } from 'src/app/servicios/emisor.service';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { HttpClient } from '@angular/common/http';
@@ -177,36 +176,7 @@ export class OpsCertPage implements OnInit {
               this.pdfObj = pdfMake.createPdf(documento);
 
               if(this.plt.is('cordova')){
-                // se transforma a base64
-                this.pdfObj.getBase64((data) => {
-                  this.pdfBase64 = data;
-                  console.log(this.pdfBase64);
-                });
-
-                const fileName = 'CertificadoVecired.pdf';
-
-                try {
-                  Filesystem.writeFile({
-                    path: fileName,
-                    data: this.pdfBase64,
-                    directory: Directory.Documents
-                    // encoding: FilesystemEncoding.UTF8
-                  }).then((writeFileResult) => {
-                    Filesystem.getUri({
-                        directory: Directory.Documents,
-                        path: fileName
-                    }).then((getUriResult) => {
-                        const path = getUriResult.uri;
-                        this.fileOpener.open(path, 'application/pdf')
-                        .then(() => console.log('File is opened'))
-                        .catch(error => console.log('Error openening file', error));
-                    }, (error) => {
-                        console.log(error);
-                    });
-                  });
-                } catch (error) {
-                  console.error('Unable to write file', error);
-                }
+                //  se detecta plataforma capacitor
 
               }else {
                 this.pdfObj.download('CertificadoVeciRed_'+ fechaactual +'.pdf');
@@ -239,6 +209,14 @@ export class OpsCertPage implements OnInit {
     //console.log(this.emisor._id);
     this.emisorService.enviarDatos(emisor);
     this.ruta.navigateByUrl('main/tabs/codigo-qr');
+  }
+
+  private async getPdfBase64(pdfData): Promise<string> {
+    return new Promise((resolve, reject) => {
+      pdfData.getBase64((data) => {
+        resolve(data);
+      });
+    });
   }
 }
 

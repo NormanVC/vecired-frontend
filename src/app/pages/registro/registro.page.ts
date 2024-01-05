@@ -70,13 +70,23 @@ export class RegistroPage implements OnInit {
   validacion(){
 
     //Validación caracteres extraños en nombre
-    var caracteres = /(^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,50})+$/g;
+    var caracteres = /^([a-zA-ZÁÉÍÓÚáéíóú]{3,}\s[a-zA-ZÁÉÍÓÚáéíóú]{4,}\s?[a-zA-ZÁÉÍÓÚáéíóú]{2,})$/;
 
     if(caracteres.test(this.userRegistro.nombre) == false){
 
-      return this.alertasService.alerta('El nombre de usuario no permite tener los caracteres ingresados. Con un mínimo de 3 caracteres y un máximo de 50.');
+      return this.alertasService.alerta('El nombre  ingresado no es valido, evite caracteres especiales, recuerde ingresar apellido.');
     }
-    console.log(this.userRegistro.fechaNacimiento);
+    //console.log(this.userRegistro.fechaNacimiento);
+
+    if(this.userRegistro.nombre.length > 3){
+
+      return this.alertasService.alerta('El nombre ingresado es demasiado corto, recuerde ingresar apellido.');
+    }
+
+    if(this.userRegistro.nombre.length > 50){
+
+      return this.alertasService.alerta('El nombre ingresado es demasiado largo, intente ingresar primer nombre, apellido paterno y materno');
+    }
 
     if(this.userRegistro.fechaNacimiento == null){
 
