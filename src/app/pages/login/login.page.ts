@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
         
       }else{
         //mostrar alerta de usuario y contraseña no correctos
-        this.alertasService.alerta('Usario y/o contraseña no son correctos');
+        this.alertasService.alerta('Usuario y/o contraseña no son correctos');
       }
     }
   }

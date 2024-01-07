@@ -70,15 +70,15 @@ export class RegistroPage implements OnInit {
   validacion(){
 
     //Validación caracteres extraños en nombre
-    var caracteres = /^([a-zA-ZÁÉÍÓÚáéíóú]{3,}\s[a-zA-ZÁÉÍÓÚáéíóú]{4,}\s?[a-zA-ZÁÉÍÓÚáéíóú]{2,})$/;
+    var caracteres = /^([a-zA-ZÁÉÍÓÚáéíóú]{3,}\s[a-zA-ZÁÉÍÓÚáéíóú]{2,}\s?[a-zA-ZÁÉÍÓÚáéíóú]{2,})$/;
 
     if(caracteres.test(this.userRegistro.nombre) == false){
 
-      return this.alertasService.alerta('El nombre  ingresado no es valido, evite caracteres especiales, recuerde ingresar apellido.');
+      return this.alertasService.alerta('El nombre  ingresado no es valido, evite caracteres especiales, recuerde ingresar ambos apellidos.');
     }
     //console.log(this.userRegistro.fechaNacimiento);
 
-    if(this.userRegistro.nombre.length > 3){
+    if(this.userRegistro.nombre.length < 3){
 
       return this.alertasService.alerta('El nombre ingresado es demasiado corto, recuerde ingresar apellido.');
     }
@@ -90,7 +90,7 @@ export class RegistroPage implements OnInit {
 
     if(this.userRegistro.fechaNacimiento == null){
 
-      return this.alertasService.alerta('Debe seleccionar una día.');
+      return this.alertasService.alerta('Debe seleccionar una fecha de nacimiento.');
     }
 
     const today = new Date();

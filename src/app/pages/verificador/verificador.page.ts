@@ -25,14 +25,40 @@ export class VerificadorPage implements OnInit {
     this.solicitud = '';
   }
 
-  verificar(){
-    if (this.solicitud && this.solicitud.length <= 24) {
-      const idSolicitud = this.solicitud;
+  async verificar(){
+    const idSolicitud = this.solicitud;
+    const validado = this.validacion();
+
+    if(validado == null){
       this.ruta.navigate(['/validate', idSolicitud]);
-    } else {
-      this.alertasService.alerta('El Id de solicitud ingresado no es válido.');
     }
 
   }
+
+  validacion(){
+    
+    if(this.solicitud.length == 0){
+      return this.alertasService.alerta('Se debe ingresar un id de solicitud en el campo antes de intentar verificarlo.')
+    }
+    var caracteres = /^[a-zA-Z0-9]+$/;
+    if(caracteres.test(this.solicitud) == false){
+
+      return this.alertasService.alerta('El id ingresado contiene caracteres invalidos');
+    }
+
+    if(this.solicitud.length < 24){
+      return this.alertasService.alerta('El id ingresado es demasiado corto, el id debe tener  24 caracteres.')
+    }
+
+    if(this.solicitud.length > 24){
+      return this.alertasService.alerta('El id ingresado es demasiado largo, el id debe tener 24 caracteres')
+    }
+
+   
+
+    return null
+  }
+
+ 
 
 }

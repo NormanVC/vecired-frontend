@@ -24,9 +24,9 @@
           <ion-item color="none">
             <ion-label position="floating" color="light" class="my-label">
               <ion-icon name="person" item-start></ion-icon>
-              Nombre y Apellido
+              Nombre y Apellidos
             </ion-label>
-            <ion-input name="nombre" type="text" minlength="8" class="my-label" maxlength="50" placeholder="Manuel Rodriguez Soto" [(ngModel)]="userRegistro.nombre" color="light" required>
+            <ion-input name="nombre" type="text" minlength="3" class="my-label" maxlength="50" placeholder="Manuel Rodriguez Soto" [(ngModel)]="userRegistro.nombre" color="light" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 50 - userRegistro.nombre.length }} caracteres restantes</span> 
