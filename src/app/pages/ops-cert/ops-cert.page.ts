@@ -91,12 +91,12 @@ export class OpsCertPage implements OnInit {
   
 
   confirmacion(idSolicitud: string) {
-    const fechaactual = fechaActual();
-    let logo =  {image: this.logoData, width: 150, length:100};
     if(this.plt.is('cordova')){
       this.alertasService.alerta('Los PDF solo pueden emitirse desde APP web');
 
     }else{
+      const fechaactual = fechaActual();
+      let logo =  {image: this.logoData, width: 150, length:100};
     //console.log(idSolicitud);
     this.alertasService.alertaDecision('¿Desea generar ahora este certificado? Solo puede generarlo una vez.').then(
       respuesta => {
@@ -178,6 +178,7 @@ export class OpsCertPage implements OnInit {
               };
             
               this.pdfObj = pdfMake.createPdf(documento);
+              this.pdfObj.download('CertificadoVeciRed_'+ fechaactual +'.pdf');
               window.location.reload();
              
             },

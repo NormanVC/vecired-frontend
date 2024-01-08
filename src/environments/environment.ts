@@ -10,7 +10,8 @@ export const environment = {
   //url: 'https://shrouded-reaches-97156.herokuapp.com'
   //url: 'https://vecired.herokuapp.com'
   //url: 'http://localhost:3000'
-    url: 'http://localhost:1472'
+  url: 'http://146.83.194.142:1471'
+  // url: 'http://localhost:1472'
  //url: 'http://192.168.1.82:3000'
 };
 
