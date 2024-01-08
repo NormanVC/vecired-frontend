@@ -93,7 +93,7 @@
               <ion-icon name="home" item-start></ion-icon>
               Dirección
             </ion-label>
-            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" class="my-label" placeholder="Casimiro Zujomic #221,dto #320,Concepcion" color="light" required>
+            <ion-input name="direccion" type="text" [(ngModel)]="userRegistro.direccion" class="my-label" placeholder="Casimiro Zujomic #221,dto #320,Concepcion" color="light" (keyup.enter)="login()" required>
             </ion-input>
           </ion-item>
           <span class="caracteres">{{ 150 - userRegistro.direccion.length }} caracteres restantes</span>
