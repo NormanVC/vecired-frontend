@@ -132,11 +132,15 @@ export class RegistroPage implements OnInit {
     
     //Validacion de rut
     if(!validate(this.userRegistro.rut)){
-      return this.alertasService.alerta('El rut ingresado no es valido.');
+      return this.alertasService.alerta('El rut ingresado no es válido.');
     }
 
     //Validacion de direccion
-    //TO DO
+    var caracteres3 = /(^[A-Za-zÁÉÍÓÚáéíóúñÑ 0-9,#.]{3,150})+$/g;
+    if(caracteres3.test(this.userRegistro.direccion) == false){
+
+      return this.alertasService.alerta('La dirección ingresada contiene características inválidas.');
+    }
 
     //Validación de campos vacios
      /* if(registrarse.invalid){
