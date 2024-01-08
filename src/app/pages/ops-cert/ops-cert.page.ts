@@ -137,7 +137,7 @@ export class OpsCertPage implements OnInit {
                   { text: this.emisor.certificado.contacto, style: 'contacto' },
           
                   // QR ,  SE DEBE CAMBIAR LA DIRECCION CUANDO SE SAQUE DE LOCALHOST
-                    { qr: 'http://146.83.194.142/validate/' +this.emisor._id, fit: '50'  },
+                    { qr: 'http://146.83.194.142:1471/validate/' +this.emisor._id, fit: '50'  },
           
                   
                 ],

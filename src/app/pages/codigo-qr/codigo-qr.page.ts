@@ -23,7 +23,7 @@ export class CodigoQrPage implements OnInit {
     //console.log(this.emisor);
     //console.log(this.emisor);
     this.idSolicitud = this.emisor._id;
-    this.qrdata = `http://146.83.194.142/validate/${this.idSolicitud}`;
+    this.qrdata = `http://146.83.194.142:1471/validate/${this.idSolicitud}`;
    }
 
   obtenerID() {
